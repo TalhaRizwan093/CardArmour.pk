@@ -91,7 +91,7 @@ const Login = () => {
           style={{ marginLeft: "35%", marginTop: "3%", marginRight: "35%" }}
         >
           <Card title="" >
-            <form onSubmit={handleSubmit} >
+            
             <p className="LoginTag">Login</p>
             <p className="WelcomeTag">Welcome Back!</p>
 
@@ -148,7 +148,7 @@ const Login = () => {
             </div>
 
             <Button
-              type = "submit"
+              onClick={handleSubmit}
               label="LOGIN"
               className="p-button-outlined p-button-info"
               style={{ marginLeft: "42%", marginTop: "2%" }}
@@ -186,7 +186,7 @@ const Login = () => {
                 
               />
             </div>
-            </form>
+            
           </Card>
         </Row>
       </div>}
