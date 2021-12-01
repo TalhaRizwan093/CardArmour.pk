@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3C2A3023-0AEF-4961-6AB6-352E1515B4F1" name="Setting">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:27:35 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SettingID" id="BD1F311F-8679-A98E-F990-2BB303566943">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:45 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="language" id="2BDF62E9-F262-9AF1-2404-F643CA935E85">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:45 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="timeformat" id="68662DF4-B5FF-E298-D74F-018D10A63140">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:45 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="light/dark_mode" id="3CC9F7E2-E5DA-E8F1-3DEB-5513FAC85B96">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:45 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="userID" id="3CE31539-C177-AAB9-26E1-466322703ABE">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:51 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E8561E68-C8E6-803D-509A-6D58FECD2147" referredColumn="029BF5BB-F48F-983C-B24B-5F6619DBAD88"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="166C4745-B146-03A4-2123-2EDFC7524485" name="Setting_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:45 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BD1F311F-8679-A98E-F990-2BB303566943"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="523F1E18-582E-37A4-3902-A89DBBA90218" name="Setting_System User_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:28:51 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3CE31539-C177-AAB9-26E1-466322703ABE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

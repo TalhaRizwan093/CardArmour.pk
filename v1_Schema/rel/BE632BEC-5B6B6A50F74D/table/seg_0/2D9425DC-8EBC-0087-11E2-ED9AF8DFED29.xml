@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2D9425DC-8EBC-0087-11E2-ED9AF8DFED29" name="City">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:20:04 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CityID" id="7891A82F-EDFF-D0E2-F5EB-46FAE32A80D8">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:21:19 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="FDEB81B8-08EB-27F2-C993-8F5C569433C1">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:21:19 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="countryID" id="9FDC41B9-1F19-329B-3E48-BCBFC9189516">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:22:12 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C896AF9E-E36E-BD0A-50AD-5054CF5286D4" referredColumn="2F8AB7D0-82B7-6A2F-71AF-951EFE8ED9B8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3F9BD454-876B-6A47-7634-FEE2D4B15E33" name="City_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:21:19 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7891A82F-EDFF-D0E2-F5EB-46FAE32A80D8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7BDACDF3-77BC-6785-B4B1-E2F86E5D0367" name="City_Country_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:22:12 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9FDC41B9-1F19-329B-3E48-BCBFC9189516"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

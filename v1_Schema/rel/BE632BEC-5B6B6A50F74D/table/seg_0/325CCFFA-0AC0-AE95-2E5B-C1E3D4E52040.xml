@@ -1,0 +1,149 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="325CCFFA-0AC0-AE95-2E5B-C1E3D4E52040" name="Customer">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:14:49 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CustomerID" id="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="8A0CA84E-5037-0477-7CE5-67D25E7441B2">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="gender" id="708010C8-0C5D-19AD-A23E-13CC352C621D">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cnic" id="1531480A-4EE8-E4F8-1E2A-07A49F517FD0">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dob" id="BD1B916B-460E-93E4-06F9-48DEFC069813">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="age" id="E00215E7-D159-9C1D-0BD1-4A3293871EAD">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="FD2CC65F-2894-9D91-FE33-689F45E61579">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:36:03 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cityID" id="F50840E0-3834-56BE-FD46-24992A13B798">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:22:39 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94D92443-596D-0F6C-AA30-FD231BE9F18D" referredColumn="7891A82F-EDFF-D0E2-F5EB-46FAE32A80D8"/>
+</associations>
+</Column>
+<Column name="userID" id="A3163350-1C40-0E72-187D-7A314096BA8A">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:23:18 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D091828-0375-F4BA-2F73-04971F21A50D" referredColumn="029BF5BB-F48F-983C-B24B-5F6619DBAD88"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C8D72BB0-26FB-2717-2370-DFE4D5ABC339" name="Customer_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:17:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5CB51D26-4F97-9A73-362B-794264CD0D25" name="Customer_City_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:22:39 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F50840E0-3834-56BE-FD46-24992A13B798"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C5141AFE-EBF7-DE17-9DFA-AC01F026DDD7" name="Customer_System User_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:23:18 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3163350-1C40-0E72-187D-7A314096BA8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

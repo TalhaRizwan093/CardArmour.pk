@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D3631DD3-8DAA-71C0-7AAF-DF8CAF2D300A" name="Phone Book">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:18:53 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PhoneNumberID" id="6769C415-849E-F0D0-56D3-29C0451D0189">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:19:38 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PhoneNumber" id="3B7E9417-AB6C-EED0-9A04-5B556C93533E">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:19:38 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerID" id="6C4A5C15-F13B-DCFF-4FCD-1C6F9760904C">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:19:41 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AFFA7CE0-D212-6FD7-FF7F-2D357309B75F" referredColumn="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="89F46355-DB22-2BB7-AE2B-091ADE9F2EF0" name="Phone Book_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:19:38 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6769C415-849E-F0D0-56D3-29C0451D0189"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B7E8847F-E28D-EF71-C68F-06F2B32012D9" name="Phone Book_Customer_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:19:41 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C4A5C15-F13B-DCFF-4FCD-1C6F9760904C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

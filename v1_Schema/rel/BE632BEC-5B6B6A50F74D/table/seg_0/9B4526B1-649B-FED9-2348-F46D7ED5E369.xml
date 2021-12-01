@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9B4526B1-649B-FED9-2348-F46D7ED5E369" name="Bank Account">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:38:08 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AccountID" id="28CC4C99-CBEF-11FB-84BF-12E3B81A62BD">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cardholdername" id="83B14E92-50ED-B8AE-CE6A-234F5FD89617">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="bankname" id="515AAC2F-3EA0-93D2-3D37-5A5A2DFCFFDC">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cardnumber" id="EFF87F9B-7982-5623-DF7A-022CB6FF8CF9">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cvc" id="C7854F7D-4044-7AA6-37EE-56B4C8E98C78">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expdate" id="4BFF4ABC-6DB7-948C-6E39-3591E783CA12">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="51938606-F89C-D6EB-F208-EEDA84762E74" name="Bank Account_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:39:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28CC4C99-CBEF-11FB-84BF-12E3B81A62BD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

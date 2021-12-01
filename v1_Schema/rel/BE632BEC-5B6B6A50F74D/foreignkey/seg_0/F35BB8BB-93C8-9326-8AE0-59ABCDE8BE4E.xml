@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F35BB8BB-93C8-9326-8AE0-59ABCDE8BE4E" containerWithKeyObject="57015491-BCA7-B4BD-32AC-277134B07B91" localFKIndex="27E03636-5691-A43D-E435-236E283C8235" name="SMS_Transaction_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:54:17 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<referredTableLongName>Transaction</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>65814279-EF29-D95C-AA31-248B188E68F7</referredTableID>
+<keyObject>B420B507-2C5D-C15C-7788-E1E0F47B5B2C</keyObject>
+<referredKeyID>B420B507-2C5D-C15C-7788-E1E0F47B5B2C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>TransactionID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

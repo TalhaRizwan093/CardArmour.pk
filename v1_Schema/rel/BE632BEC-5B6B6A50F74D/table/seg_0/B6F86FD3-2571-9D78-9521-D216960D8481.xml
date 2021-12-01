@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B6F86FD3-2571-9D78-9521-D216960D8481" name="Virtual Card">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:55 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CardID" id="BD21AB53-A6C1-3AD2-06A7-39ECE3515BCD">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cardholdername" id="64BEF5F3-130C-91CA-A5E1-3CF0D2A41B6F">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="card number" id="23BDEF59-ECA2-1F89-330B-3A1B314D91AA">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cvc" id="343CB8EB-F97C-AA83-F3B7-B3EFC0D0EF3D">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expdate" id="CBA8FF6D-CE55-5AFF-6DD1-0ECE90FC871A">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C2E6D82E-6F51-84C9-CD97-F6C3EEF29F52" name="Virtual Card_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BD21AB53-A6C1-3AD2-06A7-39ECE3515BCD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

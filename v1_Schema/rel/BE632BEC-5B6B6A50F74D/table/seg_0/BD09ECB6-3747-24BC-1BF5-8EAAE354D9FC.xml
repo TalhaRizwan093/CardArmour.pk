@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BD09ECB6-3747-24BC-1BF5-8EAAE354D9FC" name="Card Link">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:46:22 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_15</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="LinkID" id="E25C8C4E-2299-EFC3-59D3-9B0AF05B767F">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:26 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="linkstatus" id="D8C236E4-C4A4-ABD8-456D-F9691E0F371C">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:26 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BankAccountID" id="1D35FD97-0D67-D485-DD18-77960DC3CF1C">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:58 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC052215-5BB5-836A-F8D0-0D2B7DA31343" referredColumn="28CC4C99-CBEF-11FB-84BF-12E3B81A62BD"/>
+</associations>
+</Column>
+<Column name="VirtualCardID" id="91809444-3F41-F2D6-48B2-AAA90ADE494E">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:48:01 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9E56938F-27B6-56E6-CD08-24E55B8898D3" referredColumn="BD21AB53-A6C1-3AD2-06A7-39ECE3515BCD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9F1F76C1-CCC1-8F59-ABCF-9167A7D5CF1D" name="Card Link_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:26 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E25C8C4E-2299-EFC3-59D3-9B0AF05B767F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="135C075C-85AB-364E-AF6B-EC5108E16FA8" name="Card Link_Bank Account_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:58 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1D35FD97-0D67-D485-DD18-77960DC3CF1C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="92D31C6C-1DA2-AD35-BE11-8ACC98752A68" name="Card Link_Virtual Card_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:48:01 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="91809444-3F41-F2D6-48B2-AAA90ADE494E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

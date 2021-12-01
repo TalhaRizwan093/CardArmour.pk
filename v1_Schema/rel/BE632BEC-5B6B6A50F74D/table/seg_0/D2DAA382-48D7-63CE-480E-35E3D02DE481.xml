@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D2DAA382-48D7-63CE-480E-35E3D02DE481" name="Flagged User">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:18 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_19</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FlaggedID" id="97EC205E-F087-EB46-3A15-E3AC6C035234">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:51 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="reason" id="A23914F2-5880-C559-C6E7-ED62901327ED">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:51 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Admin_AdminID" id="16660933-B4DE-E2DB-44E1-7E270C4ECF0D">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="776AC4FD-D905-F4EB-0EFB-786431107292" referredColumn="C5E54E18-2F54-7371-52BD-0287F818D417"/>
+</associations>
+</Column>
+<Column name="Customer_CustomerID" id="F220389C-1BA2-0F45-AB9B-962DD9DD3257">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF73EC67-6FA9-AAAE-EB14-AA225A98CEEC" referredColumn="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="27CFD5C2-8A52-3C98-37C5-B512D4EBD172" name="Flagged User_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:51 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="97EC205E-F087-EB46-3A15-E3AC6C035234"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8561791F-2FEC-87C4-627F-7BEB810B646B" name="Flagged User_Admin_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:54 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="16660933-B4DE-E2DB-44E1-7E270C4ECF0D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DD5A5648-484A-64FF-F422-500764916943" name="Flagged User_Customer_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:55:57 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F220389C-1BA2-0F45-AB9B-962DD9DD3257"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D68B6B56-354A-1426-371F-B0D3BF24F3BB" name="Feedback">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:41:56 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FeedbackID" id="D83E00AF-C733-7595-6B4B-E43B44AADE31">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:47 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="detail" id="9C6BD8DE-DF9B-E563-4E47-ED6D93AD6A73">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:47 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="63F5BC43-559F-F72B-1473-F3BAD0F0A4A5">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:47 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerID" id="7978C707-C6A6-3931-24C1-F1314DD1CDFD">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:58 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="60B8B77F-E267-8168-F03A-704639717B43" referredColumn="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C63207EA-856E-56C9-E897-2A054CC14FB9" name="Feedback_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:47 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D83E00AF-C733-7595-6B4B-E43B44AADE31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="48DDFF15-8A41-939C-249B-2E0F9E7D3CD2" name="Feedback_Customer_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:42:58 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7978C707-C6A6-3931-24C1-F1314DD1CDFD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

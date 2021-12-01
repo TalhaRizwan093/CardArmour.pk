@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="65814279-EF29-D95C-AA31-248B188E68F7" name="Transaction">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:48:56 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_16</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TransactionID" id="CC899FCD-55DE-C5FC-8E1F-14347E79C6C5">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="E49835FF-BE7F-3C57-EA2A-C20B75BCB11B">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="comment" id="4C5511F7-5372-B78D-E5F4-BDCED7149E0D">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="C9CB3D14-335A-3BDD-9140-5EE41E79BCFE">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="amount" id="E5AE6513-8E0A-0D85-5725-C1690EE049E2">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VirtualCardID" id="7CD37E21-196F-D198-2017-80AE0C4F3A35">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:50:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6923BAC2-6C4C-D710-9908-CE9CA90BC59F" referredColumn="BD21AB53-A6C1-3AD2-06A7-39ECE3515BCD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B420B507-2C5D-C15C-7788-E1E0F47B5B2C" name="Transaction_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:49:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC899FCD-55DE-C5FC-8E1F-14347E79C6C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="26280CBC-9C6B-D60F-C6AA-90C26706C070" name="Transaction_Virtual Card_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:50:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CD37E21-196F-D198-2017-80AE0C4F3A35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

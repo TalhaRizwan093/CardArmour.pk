@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9E56938F-27B6-56E6-CD08-24E55B8898D3" containerWithKeyObject="BD09ECB6-3747-24BC-1BF5-8EAAE354D9FC" localFKIndex="92D31C6C-1DA2-AD35-BE11-8ACC98752A68" name="Card Link_Virtual Card_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:48:01 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<referredTableLongName>Virtual Card</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>B6F86FD3-2571-9D78-9521-D216960D8481</referredTableID>
+<keyObject>C2E6D82E-6F51-84C9-CD97-F6C3EEF29F52</keyObject>
+<referredKeyID>C2E6D82E-6F51-84C9-CD97-F6C3EEF29F52</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CardID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

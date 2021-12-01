@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AC052215-5BB5-836A-F8D0-0D2B7DA31343" containerWithKeyObject="BD09ECB6-3747-24BC-1BF5-8EAAE354D9FC" localFKIndex="135C075C-85AB-364E-AF6B-EC5108E16FA8" name="Card Link_Bank Account_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:47:58 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<referredTableLongName>Bank Account</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9B4526B1-649B-FED9-2348-F46D7ED5E369</referredTableID>
+<keyObject>51938606-F89C-D6EB-F208-EEDA84762E74</keyObject>
+<referredKeyID>51938606-F89C-D6EB-F208-EEDA84762E74</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>AccountID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

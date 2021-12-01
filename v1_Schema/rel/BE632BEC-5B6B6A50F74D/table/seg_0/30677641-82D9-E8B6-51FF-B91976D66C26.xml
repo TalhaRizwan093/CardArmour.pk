@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="30677641-82D9-E8B6-51FF-B91976D66C26" name="Customer Bank Account">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:14 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CBA_ID" id="768636A5-5B5F-65A0-305F-27663D910E7F">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:39 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customerID" id="0E46825F-1FBF-E14F-E1A0-1D82BE6283E7">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:42 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8809E4A1-E27F-EEB3-297C-5A3C2C960EA4" referredColumn="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</associations>
+</Column>
+<Column name="accountID" id="1E427F96-E090-0B8B-4941-B4B05B217BA4">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:52 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="707F0502-61D1-9201-15E0-44A5D9E2FADC" referredColumn="28CC4C99-CBEF-11FB-84BF-12E3B81A62BD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D798E4C8-95DD-2481-83A5-B8E1FAA1A448" name="Customer Bank Account_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:39 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="768636A5-5B5F-65A0-305F-27663D910E7F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D32592B-E1C6-7355-4ECD-A1EFEAE18FBC" name="Customer_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:42 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0E46825F-1FBF-E14F-E1A0-1D82BE6283E7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DBC734CF-C4ED-E743-4BD7-648D7374EEB1" name=" Account_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:40:52 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E427F96-E090-0B8B-4941-B4B05B217BA4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

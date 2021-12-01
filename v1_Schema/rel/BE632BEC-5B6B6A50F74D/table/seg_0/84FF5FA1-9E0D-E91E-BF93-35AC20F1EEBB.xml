@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="84FF5FA1-9E0D-E91E-BF93-35AC20F1EEBB" name="Admin">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:23:59 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AdminID" id="C5E54E18-2F54-7371-52BD-0287F818D417">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:26:43 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="9E235949-97F5-1016-8706-5A6441967BFA">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:26:43 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="gender" id="58AF4F39-B865-E9AC-6526-2409DDA5F3B1">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:32:36 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="ABA87EEF-0756-887E-5A9F-DD6E95C53024">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:36:17 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cityID" id="FCDD7216-0008-668B-552F-E5F12C712F87">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:26:53 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5057E168-26BD-AE27-2E62-E4468B5FAFEC" referredColumn="7891A82F-EDFF-D0E2-F5EB-46FAE32A80D8"/>
+</associations>
+</Column>
+<Column name="userID" id="EB7F1BF9-6CAA-A3B1-9709-D9A1604CCD09">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:27:08 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D5860674-7FD0-0F19-F7A9-13E4FFB1417F" referredColumn="029BF5BB-F48F-983C-B24B-5F6619DBAD88"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="91B31F14-9FE7-2A65-FEBE-D1EA675CAB6F" name="Admin_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:26:43 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5E54E18-2F54-7371-52BD-0287F818D417"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A7E28375-5482-C327-58F7-3CA3D0809A8C" name="Admin_City_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:26:53 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FCDD7216-0008-668B-552F-E5F12C712F87"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9A66CB6B-FE47-3D80-1B7D-E4E0D628CBFF" name="Admin_System User_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:27:08 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EB7F1BF9-6CAA-A3B1-9709-D9A1604CCD09"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

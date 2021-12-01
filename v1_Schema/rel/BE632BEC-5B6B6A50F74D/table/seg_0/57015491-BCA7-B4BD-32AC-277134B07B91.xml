@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="57015491-BCA7-B4BD-32AC-277134B07B91" name="SMS">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:51:10 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SMS_ID" id="EFE64950-BF4D-AD2E-664A-016FECE2467E">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:53:24 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time" id="455FAF76-2A74-03BF-5AF1-CF206CE6F00E">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:53:24 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="details" id="F9DF88CE-5F8C-1C32-8F78-088E36E51A8E">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:53:24 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transactionID" id="9267B122-2099-D200-947C-BA86F66C7A89">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:54:17 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F35BB8BB-93C8-9326-8AE0-59ABCDE8BE4E" referredColumn="CC899FCD-55DE-C5FC-8E1F-14347E79C6C5"/>
+</associations>
+</Column>
+<Column name="customerID" id="2AAD5112-FA3F-4A9C-4BA1-E734588420A6">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:54:21 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FCA16CAF-416E-1FAD-BD38-503AC1D6C6F8" referredColumn="FAC876E8-8C2C-FCA7-F856-BBA6C155B6B1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="42C7B617-DABD-B22A-C3F3-8A149C2150B5" name="SMS_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:53:24 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EFE64950-BF4D-AD2E-664A-016FECE2467E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="27E03636-5691-A43D-E435-236E283C8235" name="SMS_Transaction_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:54:17 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9267B122-2099-D200-947C-BA86F66C7A89"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C3BC363D-E8BD-5DF0-BD40-EA2BA381ECA6" name="SMS_Customer_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:54:21 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2AAD5112-FA3F-4A9C-4BA1-E734588420A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

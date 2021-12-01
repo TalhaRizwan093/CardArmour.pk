@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FBE3D04C-8C89-B82E-B4B7-6051BDC4750E" name="Feedback Response">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:43:25 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ResponseID" id="5C17987A-BD90-C3D5-BEFE-7EC760CBFAAD">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:06 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="comment" id="A66CE532-90E0-10FF-7604-14D8DFC172FF">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:06 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="3EADCADA-9006-93A6-B1F9-63B7495AE24D">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:06 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adminID" id="0406DBCB-1456-AF36-4418-174A5EA94047">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:12 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4D52B326-8C83-6870-3856-9F68D1BF0281" referredColumn="C5E54E18-2F54-7371-52BD-0287F818D417"/>
+</associations>
+</Column>
+<Column name="feedbackID" id="621A12AF-40F4-98D6-3FFE-3386AB6CB566">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:15 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DBFC51F8-78AA-81F8-64BF-81B4A148227B" referredColumn="D83E00AF-C733-7595-6B4B-E43B44AADE31"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="276E295E-C352-AD13-DF0A-F86632786F04" name="Feedback Response_PK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:06 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5C17987A-BD90-C3D5-BEFE-7EC760CBFAAD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B7520E7-19A4-7F6D-BF5B-C558B742ECD6" name="Feedback Response_Admin_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:12 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0406DBCB-1456-AF36-4418-174A5EA94047"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="014CD5E0-9158-B65A-58A3-3951CC26CB83" name="Feedback Response_Feedback_FK">
+<createdBy>Shehroze</createdBy>
+<createdTime>2021-11-28 11:44:15 UTC</createdTime>
+<ownerDesignName>v1_Schema</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="621A12AF-40F4-98D6-3FFE-3386AB6CB566"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
