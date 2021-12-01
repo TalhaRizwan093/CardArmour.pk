@@ -62,11 +62,20 @@ const Login = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      { isPending && <div>
+      {/* { isPending && <div>
         <Row>
           <br></br>
         </Row>
         <Row>
+        <h1 className="pending">Loading...</h1>
+        </Row>
+        <Row></Row></div>} */}
+        { isPending && <div>
+        <Row>
+          <br></br>
+        </Row>
+        <Row>
+        <div class="loader"></div>
         <h1 className="pending">Loading...</h1>
         </Row>
         <Row></Row></div>}
