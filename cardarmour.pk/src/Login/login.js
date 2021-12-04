@@ -8,6 +8,7 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Checkbox } from "primereact/checkbox";
 import {userLogin} from "../api/authenticationService";
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -75,8 +76,10 @@ const Login = () => {
           <br></br>
         </Row>
         <Row>
-        <div class="loader"></div>
+        <ProgressSpinner id="loading" strokeWidth ="5"/>
         <h1 className="pending">Loading...</h1>
+        {/* <div class="loader"></div>
+        <h1 className="pending">Loading...</h1> */}
         </Row>
         <Row></Row></div>}
       { isPending === false && <div>
@@ -84,7 +87,7 @@ const Login = () => {
           <br></br>
         </Row>
         <Row>
-          <h1 className="name">CardArmour.pk</h1>
+          <h1 className="name_login">CardArmour.pk</h1>
         </Row>
         <Row
           className="p-shadow-24"

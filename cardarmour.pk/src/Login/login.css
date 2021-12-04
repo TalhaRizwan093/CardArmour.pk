@@ -25,7 +25,7 @@
   background-color: rgb(238, 252, 255);
 }
 
-.name {
+.name_login {
   margin-left: 44%;
   font-family: "Poppins", sans-serif;
   color: rgb(34, 40, 77);
@@ -41,9 +41,9 @@
   color: rgb(34, 40, 77);
   margin-left: 43.5%;
 }
-.loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid rgb(34, 40, 77); /* Blue */
+/* .loader {
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid rgb(34, 40, 77); 
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -55,6 +55,10 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+} */
+#loading{
+  margin-left: 45%;
+  margin-top: 20%;
 }
 
 
