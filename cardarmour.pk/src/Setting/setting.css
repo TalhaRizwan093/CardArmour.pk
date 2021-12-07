@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.namesetting {
+  margin-left: 42%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(34, 40, 77);
+}
+.namesettingtag {
+  margin-left: 30.5%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(34, 40, 77);
+}
+
+.parasetting1 {
+  margin-left: -1%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(34, 40, 77);
+}
+
+.parasetting2 {
+  margin-left: 8%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(34, 40, 77);
+}
+
+.parasetting3 {
+  margin-left: 3.5%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(34, 40, 77);
+}

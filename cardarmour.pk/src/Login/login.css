@@ -21,11 +21,7 @@
   margin-top: 8%;
 }
 
-.p-card-body {
-  background-color: rgb(238, 252, 255);
-}
-
-.name_login {
+.name {
   margin-left: 44%;
   font-family: "Poppins", sans-serif;
   color: rgb(34, 40, 77);
@@ -36,40 +32,17 @@
   margin-top: -3%;
 }
 
-.pending{
+.pending {
   font-family: "Poppins", sans-serif;
   color: rgb(34, 40, 77);
-  margin-left: 43.5%;
-}
-/* .loader {
-  border: 16px solid #f3f3f3; 
-  border-top: 16px solid rgb(34, 40, 77); 
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
   margin-left: 45%;
-  margin-top: 20%;
-  animation: spin 2s linear infinite;
+  margin-top: 50%;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-} */
-#loading{
-  margin-left: 45%;
-  margin-top: 20%;
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  margin-left: 29%;
+  margin-right: 27%;
 }
-
-
-
-/* .loadingText{
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  
-  width: 100%;
-  min-height: 100vh;
-} */
-
-

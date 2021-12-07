@@ -9,22 +9,35 @@ import { Card } from "primereact/card";
 import { Calendar } from "primereact/calendar";
 import "./signup.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
-
+import { Navigate, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [date1, setDate1] = useState(null);
+  const navigate = useNavigate();
+  const handleCancel = (e) =>{
+
+    e.preventDefault();
+    navigate('/')
+
+  }
+
   return (
     <div
       style={{
         backgroundImage: "url(background.jpg)",
-        height: "100vh",
+        position: "fixed",
+        width: "100%",
+        height: "100%",
+        top: "0px",
+        left: "0px",
+        zIndex: "1000",
       }}
     >
       <Row>
         <br></br>
       </Row>
       <Row>
-        <h1 className="name_signup">CardArmour.pk</h1>
+        <h1 className="name">CardArmour.pk</h1>
       </Row>
       <Row>
         <Col xs={2}>
@@ -190,7 +203,7 @@ const SignUp = () => {
             </div>
             <Button
               label="Sign Up"
-              className="p-button-outlined p-button-info"
+              className="p-button-rounded p-button-outlined"
               style={{
                 marginLeft: "36.5%",
                 marginTop: "2%",
@@ -198,9 +211,10 @@ const SignUp = () => {
               }}
             />
             <Button
+              onClick={handleCancel}
               label="Cancel"
-              className="p-button-outlined p-button-danger"
-              style={{ marginLeft: "10%", marginBottom: "5%" }}
+              className="p-button-rounded p-button-outlined"
+              style={{ color: "red", marginLeft: "10%", marginBottom: "5%" }}
             />
           </Card>
         </Col>

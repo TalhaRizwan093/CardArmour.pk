@@ -3,17 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import LoginForm from "./Login/login";
-import SignUp from "./SignUp/signup";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Homepage from "./Homepage/homepage";
+import { Provider } from "react-redux"
+import store from './redux/store';
 
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
-    {/* <LoginForm /> */}
-    <SignUp />
-    {/* <Homepage /> */}
-  </React.StrictMode>,
+    <App />
+  </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

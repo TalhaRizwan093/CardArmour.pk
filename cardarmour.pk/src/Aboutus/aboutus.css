@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.card1 {
+  background-image: url(aboutuscard.jpg);
+  border-radius: 8%;
+  margin-left: 35%;
+  margin-right: 15%;
+  margin-top: 5%;
+}
+
+.card2 {
+  background-image: url(aboutuscard.jpg);
+  border-radius: 8%;
+  margin-left: 15%;
+  margin-right: 35%;
+  margin-top: 5%;
+}
+
+.text {
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.para {
+  border-radius: 4%;
+  background-image: url(aboutuscard.jpg);
+  margin-top: 5%;
+}
+
+.paratext {
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  margin-top: 2%;
+}
