@@ -25,6 +25,7 @@ const Login = ({loading,error,...props}) => {
 
   React.useEffect(()=>{
     localStorage.clear();
+    props.loginFailure();
   },[])
 
   const handleSubmit = (e) => {

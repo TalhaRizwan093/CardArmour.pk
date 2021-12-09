@@ -10,14 +10,113 @@ import { Calendar } from "primereact/calendar";
 import "./signup.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
+import {countriesAPI} from "../api/authenticationService";
+import {citiesAPI} from "../api/authenticationService";
+import {systemUserAPI} from "../api/authenticationService";
+ import {userID} from "../api/authenticationService";
+ import {addCustomer} from "../api/authenticationService";
+ import {Alert} from 'react-bootstrap';
+ 
 
 const SignUp = () => {
-  const [date1, setDate1] = useState(null);
+  const [firstname, setFirstname] = useState(null);
+  const [lastname, setLastname] = useState(null);
+  const [gender_i, setGender] = useState(null);
+  const [cnic, setCnic] = useState(null);
+  const [dob1, setDob] = useState(null);
+  const [phonenumber, setPhonenumber] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [country_i, setCountry] = useState(null);
+  const [city_i, setCity] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [isPending, setIsPending] = useState(null);
+  const [countries, setCountries] = useState(null);
+  const [cities, setCities] = useState(null);
+  const [age, setAge] = useState(null);
+  const [error,setError] = useState(null);
   const navigate = useNavigate();
+
+  const genders = [
+    { name: 'Male'},
+    { name: 'Female'},
+  ];
+
+  React.useEffect(()=>{
+    setIsPending(true);
+     countriesAPI().then((response) => {
+      const data = response.data;
+      setCountries(data);
+    }
+    );
+    citiesAPI().then((response) => {
+      const data = response.data;
+      setCities(data);
+    }
+    );
+    setIsPending(false);
+  },[])
+
+
+
+  
+
+  const onGenderChange = (e) => {
+    setGender(e.value)
+    
+  }
+
+  const onCountryChange = (e) => {
+    setCountry(e.value)
+    
+  }
+
+  const onCityChange = (e) => {
+    setCity(e.value)
+    
+  }
+
   const handleCancel = (e) =>{
 
     e.preventDefault();
     navigate('/')
+
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const systemUser = {username, password}
+    const cityid = city_i.cityid
+    const gender = gender_i.name
+    const name = firstname +' ' + lastname;
+    const dob = "2000-12-01"
+    let customer = {name, gender, cnic, dob, email, cityid,age}
+    console.log("system user", systemUser)
+    console.log("customer",customer )
+    let userid = null
+    systemUserAPI(systemUser).then((response) => {
+      if(response.data){
+        console.log("systemuser response",response)
+        userID(systemUser).then((response) => {
+
+          console.log("id get response",response)
+          userid = response.data
+          let customer = {name, gender, cnic, dob, email, cityid,userid,age}
+          console.log("final customer",customer )
+          addCustomer(customer).then((response) => {
+            console.log("customer",response)
+            navigate('/');
+          })
+        }).catch((err) => {
+            setError("Username already exist");
+        })
+      }
+
+    })
+    
+
+    
+
 
   }
 
@@ -33,6 +132,9 @@ const SignUp = () => {
         zIndex: "1000",
       }}
     >
+      {isPending === false && (
+        
+        <div>
       <Row>
         <br></br>
       </Row>
@@ -104,13 +206,19 @@ const SignUp = () => {
                 <label htmlFor="firstname" style={{ marginLeft: "48%" }}>
                   Firstname
                 </label>
-                <InputText id="firstname" type="text" placeholder="e.g. John" />
+                <InputText
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  id="firstname" type="text" placeholder="e.g. John" />
               </div>
               <div className="p-field p-col-12 p-md-6">
                 <label htmlFor="lastname" style={{ marginLeft: "48%" }}>
                   Lastname
                 </label>
-                <InputText id="lastname" type="text" placeholder="e.g. Wich" />
+                <InputText 
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
+                  id="lastname" type="text" placeholder="e.g. Wich" />
               </div>
               <div
                 className="p-field p-col-12 p-md-3"
@@ -121,14 +229,14 @@ const SignUp = () => {
                 </label>
                 <Dropdown
                   inputId="gender"
-                  // value={selectedState}
-                  // options={states}
-                  // onChange={onStateChange}
+                  value={gender_i}
+                  options={genders}
+                  onChange={onGenderChange}
                   placeholder="Select"
                   optionLabel="name"
                 />
               </div>
-              <div className="p-field p-col-12 p-md-7">
+              <div className="p-field p-col-12 p-md-5">
                 <label
                   htmlFor="cnic"
                   style={{ marginLeft: "40%", marginTop: "1.5%" }}
@@ -136,6 +244,8 @@ const SignUp = () => {
                   CNIC
                 </label>
                 <InputText
+                  value={cnic}
+                  onChange={(e) => setCnic(e.target.value)}
                   id="cnic"
                   type="text"
                   placeholder="XXXXX-XXXXXXX-X"
@@ -150,8 +260,23 @@ const SignUp = () => {
                 </label>
                 <Calendar
                   id="dob"
-                  value={date1}
-                  onChange={(e) => setDate1(e.value)}
+                  value={dob1}
+                  onChange={(e) => setDob(e.value)}
+                />
+              </div>
+              <div
+                className="p-field p-col-12 p-md-2"
+                style={{ marginTop: "0.1%" }}
+              >
+                <label htmlFor="dob" style={{ marginLeft: "15%" }}>
+                  Age
+                </label>
+                <InputText
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  id="age"
+                  type="text"
+                  placeholder=""
                 />
               </div>
               <div className="p-field p-col-12 p-md-6">
@@ -159,6 +284,8 @@ const SignUp = () => {
                   Phone Number
                 </label>
                 <InputText
+                  value={phonenumber}
+                  onChange={(e) => setPhonenumber(e.target.value)}
                   id="phonenumebr"
                   type="text"
                   placeholder="XXXX-XXXXXXX"
@@ -169,6 +296,8 @@ const SignUp = () => {
                   Email
                 </label>
                 <InputText
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   type="text"
                   placeholder="e.g. example@email.com"
@@ -180,9 +309,9 @@ const SignUp = () => {
                 </label>
                 <Dropdown
                   inputId="state"
-                  // value={selectedState}
-                  // options={states}
-                  // onChange={onStateChange}
+                  value={country_i}
+                  options={countries}
+                  onChange={onCountryChange}
                   placeholder="Select"
                   optionLabel="name"
                 />
@@ -193,15 +322,40 @@ const SignUp = () => {
                 </label>
                 <Dropdown
                   inputId="city"
-                  // value={selectedState}
-                  // options={states}
-                  // onChange={onStateChange}
+                  value={city_i}
+                  options={cities}
+                  onChange={onCityChange}
                   placeholder="Select"
                   optionLabel="name"
                 />
               </div>
+              
+              <div className="p-field p-col-6">
+                <label htmlFor="username" style={{ marginLeft: "44%" }}>
+                  Username
+                </label>
+                <InputText
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  id="username" type="text" />
+              </div>
+              <div className="p-field p-col-6">
+                <label htmlFor="password" style={{ marginLeft: "44%" }}>
+                  Password
+                </label>
+                <InputText 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  id="password" type="text" />
+              </div>
+              { error &&
+        <Alert style={{marginTop:'20px'}} variant="danger">
+         {error}
+          </Alert>}
             </div>
+            
             <Button
+              onClick={handleSubmit}
               label="Sign Up"
               className="p-button-rounded p-button-outlined"
               style={{
@@ -219,6 +373,7 @@ const SignUp = () => {
           </Card>
         </Col>
       </Row>
+      </div>)}
     </div>
   );
 };
