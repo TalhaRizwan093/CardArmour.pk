@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Dialog } from 'primereact/dialog';
 import { InputText } from "primereact/inputtext";
-import { getCustomerId, getBankAccount, deletePaymentMethod } from "../api/authenticationService";
+import { getCustomerId, getBankAccount, deletePaymentMethod, generateVirtualCard } from "../api/authenticationService";
 
 
 const Homepage = ({ loading, error, ...props }) => {
@@ -76,7 +76,14 @@ const onHide = (name) => {
 }
 
 const handleSubmit = () => {
-  console.log("hello")
+  const cardholdername = username;
+  const expdate = expiryDate;
+  console.log("cardholdername",cardholdername);
+  console.log("expdate",expdate);
+  generateVirtualCard(cardholdername,expdate).then((response)=>{
+    window.location.reload(true);
+  })
+  
 }
 
 const renderFooter = (name) => {

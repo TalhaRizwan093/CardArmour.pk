@@ -85,6 +85,14 @@ export const deletePaymentMethod = async (accountid) => {
   });
 };
 
+export const generateVirtualCard = async (cardholdername,expdate) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/generateVirtualCard", 
+    params: {cardholdername,expdate}
+  });
+};
+
 
 
 
