@@ -9,23 +9,23 @@ import { useNavigate } from "react-router-dom";
 const Feedback = () => {
   const [value2, setValue2] = useState("");
   const navigate = useNavigate();
-  
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
+
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
   let username = getToken();
-  
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     username = getToken();
-    if( username === "undefined" ||  username === null){
-      navigate('/');
+    if (username === "undefined" || username === null) {
+      navigate("/");
     }
-  },[])
+  }, []);
 
   const handleCancel = (e) => {
     e.preventDefault();
-    navigate('/homepage');
-  }
+    navigate("/homepage");
+  };
 
   return (
     <div
@@ -44,7 +44,7 @@ const Feedback = () => {
           <br></br>
         </Row>
         <Row>
-          <h1 className="name">CardArmour.pk</h1>
+          <h1 className="nameFeedback">CardArmour.pk</h1>
         </Row>
         <Row>
           <Col md={3}></Col>
@@ -62,14 +62,14 @@ const Feedback = () => {
               <Row>
                 <Col md={2}></Col>
                 <Col md={8}>
-                  <div style={{ marginLeft: "5%", marginTop: "8%" }}>
+                  <div style={{ marginLeft: "5%", marginTop: "10%" }}>
                     <h5 style={{ marginLeft: "14%" }}>
                       Please Explain in detail:
                     </h5>
                     <InputTextarea
                       value={value2}
                       onChange={(e) => setValue2(e.target.value)}
-                      rows={5}
+                      rows={10}
                       cols={40}
                       autoResize
                     />
@@ -80,13 +80,17 @@ const Feedback = () => {
               <Button
                 label="Submit"
                 className="p-button-rounded p-button-outlined"
-                style={{ marginLeft: "33%", marginTop: "2%" }}
+                style={{
+                  marginLeft: "33%",
+                  marginTop: "10%",
+                  marginBottom: "5%",
+                }}
               />
               <Button
                 onClick={handleCancel}
                 label="Cancel"
                 className="p-button-rounded p-button-outlined"
-                style={{ color: "red", marginLeft: "5%" }}
+                style={{ color: "red", marginLeft: "5%", marginBottom: "5%" }}
               />
             </Card>
           </Col>

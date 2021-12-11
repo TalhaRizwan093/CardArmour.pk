@@ -46,5 +46,48 @@ export const userID = async (data) => {
   });
 };
 
+export const addPayment = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/addPaymentMethod",
+    data: data,
+  });
+};
+
+export const getCustomerId = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getCustomerIdByUserId",params: {userid}
+  });
+};
+
+export const linkCustomer = async (accountid,customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/linkCustomerToBankAccount", 
+    params: {customerid,accountid}
+  });
+};
+
+export const getBankAccount = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getBankPaymentById", 
+    params: {userid}
+  });
+};
+
+export const deletePaymentMethod = async (accountid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/deletePaymentMethod", 
+    params: {accountid}
+  });
+};
+
+
+
+
+
 
 

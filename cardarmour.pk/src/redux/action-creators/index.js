@@ -10,6 +10,7 @@ export const authenticate=()=>{
 
 export const authSuccess = (content)=>{
     localStorage.setItem('USER_KEY',content.username);
+    localStorage.setItem('USER_ID',content.userid);
 
     return {
         type:AUTH_SUCCESS,

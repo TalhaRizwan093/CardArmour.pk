@@ -26,6 +26,7 @@ public class UserController {
         try{
             userRepo.addNewUser(newUser.getUserid(), newUser.getUsername(), newUser.getPassword());
         } catch (Exception e){
+            e.printStackTrace();
         }
         return true;
 

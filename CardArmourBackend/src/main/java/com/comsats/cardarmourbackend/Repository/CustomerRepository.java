@@ -18,4 +18,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "INSERT INTO \"CARDARMOUR\".\"CUSTOMER\" (customerid, name, gender, cnic, dob, age, email, cityid, userid) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",nativeQuery = true)
     boolean addCustomerData(int customerid, String name, String gender, String cnic, Date dob,int age,String email, int cityid,int userid);
 
+    @Query(value="select customerid from customer where userid = ?1",nativeQuery = true)
+    int getCustomerByUserId(int userid);
+
 }

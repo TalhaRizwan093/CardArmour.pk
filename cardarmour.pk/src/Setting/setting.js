@@ -9,7 +9,6 @@ import { Password } from "primereact/password";
 import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
-  
   const [selectedLanguage, setLanguage] = useState(null);
   const [selectedTimeFormat, setTimeFormat] = useState(null);
   const [selectedMode, setMode] = useState(null);
@@ -17,11 +16,12 @@ const Setting = () => {
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
   const navigate = useNavigate();
-  
+
   const languages = [
     { language: "English", code: "EN" },
     { language: "日本", code: "JP" },
     { language: "中國人", code: "CN" },
+    { language: "हिंदी", code: "HN" },
   ];
   const timeformat = [
     { language: "12 Hour", code: "12hr" },
@@ -32,29 +32,28 @@ const Setting = () => {
     { language: "Dark", code: "dark" },
   ];
 
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
 
   let userName = getToken();
-  
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     userName = getToken();
-    if( userName === "undefined" ||  userName === null){
-      navigate('/');
+    if (userName === "undefined" || userName === null) {
+      navigate("/");
     }
-  },[])
+  }, []);
 
   const handleReturnHome = (e) => {
     e.preventDefault();
-    navigate('/homepage');
-  }
+    navigate("/homepage");
+  };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    navigate('/homepage');
-  }
-
+    navigate("/homepage");
+  };
 
   const onLanguageChange = (e) => {
     setLanguage(e.value);
@@ -291,7 +290,7 @@ const Setting = () => {
                 }}
               />
               <Button
-              onClick = {handleCancel}
+                onClick={handleCancel}
                 label="Cancel"
                 className="p-button-raised p-button-danger"
                 style={{ marginLeft: "6%", marginBottom: "5%" }}

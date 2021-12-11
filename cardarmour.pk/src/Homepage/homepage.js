@@ -4,60 +4,130 @@ import { Card } from "primereact/card";
 import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { connect } from 'react-redux';
-import { ProgressSpinner } from 'primereact/progressspinner';
+import { connect } from "react-redux";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { Dialog } from 'primereact/dialog';
+import { InputText } from "primereact/inputtext";
+import { getCustomerId, getBankAccount, deletePaymentMethod } from "../api/authenticationService";
 
-const Homepage = ({loading,error,...props}) => {
 
+const Homepage = ({ loading, error, ...props }) => {
   const navigate = useNavigate();
-  
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
-  let username = getToken();
-  
-  React.useEffect(()=>{
-    loading = true;
-    console.log(loading);
-    username = getToken();
-    console.log(username);
-    if( username === "undefined" ||  username === null){
-      navigate('/');
-    }
-    
-      
-  },[])
+  const [displayBasic, setDisplayBasic] = useState(false);
+  const [position, setPosition] = useState('center');
+  const [expiryDate, setExpiryDate] = useState(null);
+  const [bankName, setBankName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expDate, setExpDate] = useState("");
+  const [accountid, setAccountId] = useState(null);
 
-  const handleLogout = (e) =>{
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
+  const getID = () => {
+    return localStorage.getItem("USER_ID");
+  };
+  let username = getToken();
+  let id = getID();
+  let userid = null;
+  
+  React.useEffect(() => {
+    loading = true;
+    username = getToken();
+    
+    if (username === "undefined" || username === null) {
+      navigate("/");
+    }
+    getCustomerId(id).then((response) => {
+      console.log(response);
+      userid = response.data
+      getBankAccount(userid).then((response) => {
+        console.log(response)
+        setBankName(response.data.bankname)
+        setCardNumber(response.data.cardnumber)
+        setExpDate(response.data.expdate)
+        setAccountId(response.data.accountid)
+      })
+    })
+    console.log("accountid",accountid)
+    
+  }, []);
+
+  const handleDeletePayment = (e) => {
+    e.preventDefault();
+    deletePaymentMethod(accountid).then((response)=> {
+      window.location.reload(true);
+    })
+  }
+
+  const dialogFuncMap = {
+    'displayBasic': setDisplayBasic,
+  }
+
+  const onClick = (name, position) => {
+    dialogFuncMap[`${name}`](true);
+
+    if (position) {
+        setPosition(position);
+    }
+}
+const onHide = (name) => {
+  dialogFuncMap[`${name}`](false);
+}
+
+const handleSubmit = () => {
+  console.log("hello")
+}
+
+const renderFooter = (name) => {
+  return (
+      <div>
+          <Button label="No" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" />
+          <Button label="Yes" icon="pi pi-check" onClick={handleSubmit} autoFocus />
+      </div>
+  );
+}
+
+  const handleLogout = (e) => {
     e.preventDefault();
     localStorage.clear();
-    navigate('/');
-  }
+    navigate("/");
+  };
 
-  const handleAboutus = (e) =>{
+  const handleAboutus = (e) => {
     e.preventDefault();
-    navigate('/aboutus');
-  }
+    navigate("/aboutus");
+  };
 
-  const handleSetting = (e) =>{
+  const handleSetting = (e) => {
     e.preventDefault();
-    navigate('/setting');
-  }
+    navigate("/setting");
+  };
 
-  const handleFeedback = (e) =>{
+  const handleFeedback = (e) => {
     e.preventDefault();
-    navigate('/feedback');
-  }
+    navigate("/feedback");
+  };
 
-  const handlePayment = (e) =>{
+  const handlePayment = (e) => {
     e.preventDefault();
-    navigate('/paymentmethod');
-  }
+    navigate("/paymentmethod");
+  };
 
-  const handleCardHistory = (e) =>{
+  const handleCardHistory = (e) => {
     e.preventDefault();
-    navigate('/cardhistory');
-  }
+    navigate("/cardhistory");
+  };
+
+  const handleSmsHistory = (e) => {
+    e.preventDefault();
+    navigate("/smshistory");
+  };
+
+  const handleFeedbackHistory = (e) => {
+    e.preventDefault();
+    navigate("/feedbackhistory");
+  };
 
   return (
     <div
@@ -71,234 +141,268 @@ const Homepage = ({loading,error,...props}) => {
         zIndex: "1000",
       }}
     >
-      { loading && <div>
-        <Row>
-          <br></br>
-        </Row>
-        <Row>
-        <ProgressSpinner id="loading" strokeWidth ="5"/>
-        <h1 className="pending">Loading...</h1>
-        {/* <div class="loader"></div>
-        <h1 className="pending">Loading...</h1> */}
-        </Row>
-        <Row></Row></div>}
-        { loading === false && <div>
-        <Row>
-          <br></br>
-        </Row>
-        <Row>
-          <Col md={3}>
-            <Button
-              icon="pi pi-search"
-              className="p-button-rounded p-button-info p-button-outlined"
-              style={{ marginLeft: "5%", marginTop: "1%" }}
-            />
-            <Button
-              icon="pi pi-bell"
-              className="p-button-rounded p-button-warning p-button-outlined"
-              style={{ marginLeft: "2%" }}
-            />
-            <Button
-              icon="pi pi-bookmark"
-              className="p-button-rounded p-button-secondary p-button-outlined"
-              style={{ marginLeft: "2%" }}
-            />
-          </Col>
-          <Col md={6}>
-            <h1 className="nameCard1">CardArmour.pk</h1>
-          </Col>
-          <Col md={3}>
-            <h2 className="name1">Welcome {username}</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={5}></Col>
-          <Col md={4}></Col>
-          <Col md={3}>
-            <Button
-              onClick={handleSetting}
-              label="Setting"
-              className="p-button-rounded p-button-outlined"
-              style={{ color: "white", marginLeft: "21%" }}
-            />
-            <Button
-              onClick={handleAboutus}
-              label="About Us"
-              className="p-button-rounded p-button-outlined"
-              style={{ color: "white", marginLeft: "3%" }}
-            />
-            <Button
-              onClick={handleLogout}
-              label="Log Out"
-              className="p-button-rounded p-button-outlined"
-              style={{ color: "yellow", marginLeft: "3%" }}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <br></br>
-        </Row>
+      {loading && (
+        <div>
+          <Row>
+            <br></br>
+          </Row>
+          <Row>
+            <ProgressSpinner id="loading" strokeWidth="5" />
+            <h1 className="pending">Loading...</h1>
+          </Row>
+          <Row></Row>
+        </div>
+      )}
+      {loading === false && (
+        <div>
+          <Row>
+            <br></br>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Button
+                icon="pi pi-search"
+                className="p-button-rounded p-button-info p-button-outlined"
+                style={{ marginLeft: "5%", marginTop: "1%" }}
+              />
+              <Button
+                icon="pi pi-bell"
+                className="p-button-rounded p-button-warning p-button-outlined"
+                style={{ marginLeft: "2%" }}
+              />
+              <Button
+                icon="pi pi-bookmark"
+                className="p-button-rounded p-button-secondary p-button-outlined"
+                style={{ marginLeft: "2%" }}
+              />
+            </Col>
+            <Col md={6}>
+              <h1 className="nameCard1">CardArmour.pk</h1>
+            </Col>
+            <Col md={3}>
+              <h2 className="name1">Welcome {username}</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={5}></Col>
+            <Col md={4}></Col>
+            <Col md={3}>
+              <Button
+                onClick={handleSetting}
+                label="Setting"
+                className="p-button-rounded p-button-outlined"
+                style={{ color: "white", marginLeft: "21%" }}
+              />
+              <Button
+                onClick={handleAboutus}
+                label="About Us"
+                className="p-button-rounded p-button-outlined"
+                style={{ color: "white", marginLeft: "3%" }}
+              />
+              <Button
+                onClick={handleLogout}
+                label="Log Out"
+                className="p-button-rounded p-button-outlined"
+                style={{ color: "yellow", marginLeft: "3%" }}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <br></br>
+          </Row>
 
-        <Row>
-          <Col ms={4}>
-            <img
-              src="police.png"
-              style={{ height: "200px", marginLeft: "35%" }}
-            />
-            <p className="text">
-              Why worry when buying stuff online when you can simply use
-              CardArmour.pk. Just generate a Virtual Card on your Debit/Credit
-              card, and use the Virtual Card on any shady site you want! At
-              CardArmour we are always finding ways to increase the overall
-              usibility of our system. Do you have an idea that we should
-              implement? Give us feedback by clicking the link below.
-            </p>
-            <Button
-              onClick={handleFeedback}
-              label="Feedback"
-              className="p-button-raised p-button-help"
-              style={{ marginLeft: "50%" }}
-            />
-            <Card
-              style={{
-                marginTop: "5%",
-                marginLeft: "15%",
-                borderRadius: "8%",
-                backgroundImage: "url(paymentcard.png)",
-              }}
-            >
-              <p className="text2">Payment Method</p>
-              <p className="text3">Bank Name:</p>
-              <p className="text3">Card Number:</p>
-              <p className="text3">Exp Date:</p>
-              <Button
-                onClick = {handlePayment}
-                label="Add Payment Method"
-                className="p-button-raised p-button-success"
-                style={{ marginLeft: "8%", marginTop: "2%" }}
+          <Row>
+            <Col ms={4}>
+              <img
+                src="police.png"
+                style={{ height: "200px", marginLeft: "35%" }}
               />
+              <p className="text">
+                Why worry when buying stuff online when you can simply use
+                CardArmour.pk. Just generate a Virtual Card on your Debit/Credit
+                card, and use the Virtual Card on any shady site you want! At
+                CardArmour we are always finding ways to increase the overall
+                usibility of our system. In case of any issues or recomendation,
+                click the link below.
+              </p>
               <Button
-                label="Delete Payment Method"
-                className="p-button-raised p-button-danger"
-                style={{ marginLeft: "6%" }}
+                onClick={handleFeedback}
+                label="Feedback"
+                className="p-button-raised p-button-help"
+                style={{ marginLeft: "50%" }}
               />
-            </Card>
-          </Col>
-          <Col ms={4}>
-            <div className="datatable">
-              <br></br>
-              <h3>Recent Trasnactions</h3>
-              <br></br>
-            </div>
-            <table className="customers">
-              <tr
+              <Card
                 style={{
-                  alignItems: "center",
+                  marginTop: "5%",
+                  marginLeft: "15%",
+                  borderRadius: "8%",
+                  backgroundImage: "url(paymentcard.png)",
                 }}
               >
-                <th style={{ textAlign: "center" }}>Date</th>
-                <th style={{ textAlign: "center" }}>Comment</th>
-                <th style={{ textAlign: "center" }}>Status</th>
-                <th style={{ textAlign: "center" }}>Amount</th>
-              </tr>
-              <tbody>
-                {/* {products.map((product) => ( */}
-                <tr>
-                  {/* <td>{titleLov[product.title - 1].title}</td> */}
-                  {/* <td>{CheckkTitle(product.title)}</td>
+                <p className="text2">Payment Method </p>
+                <p className="text3">Bank Name:   {bankName}</p>
+                <p className="text3">Card Number:   {cardNumber}</p>
+                <p className="text3">Exp Date:   {expDate}</p>
+                <Button
+                  onClick={handlePayment}
+                  label="Add Payment Method"
+                  className="p-button-raised p-button-success"
+                  style={{ marginLeft: "8%", marginTop: "2%" }}
+                />
+                { accountid &&
+                <Button
+                  onClick={handleDeletePayment}
+                  label="Delete Payment Method"
+                  className="p-button-raised p-button-danger"
+                  style={{ marginLeft: "6%" }}
+                />
+      }
+              </Card>
+            </Col>
+            <Col ms={4}>
+              <div className="datatable">
+                <br></br>
+                <h3>Recent Trasnactions</h3>
+                <br></br>
+              </div>
+              <table className="customers">
+                <tr
+                  style={{
+                    alignItems: "center",
+                  }}
+                >
+                  <th style={{ textAlign: "center" }}>Date</th>
+                  <th style={{ textAlign: "center" }}>Comment</th>
+                  <th style={{ textAlign: "center" }}>Status</th>
+                  <th style={{ textAlign: "center" }}>Amount</th>
+                </tr>
+                <tbody>
+                  {/* {products.map((product) => ( */}
+                  <tr>
+                    {/* <td>{titleLov[product.title - 1].title}</td> */}
+                    {/* <td>{CheckkTitle(product.title)}</td>
                     <td>{product.date}</td>
                     <td>{product.comment}</td>
                     <td>{product.status}</td>
                     <td>{product.amount}</td> */}
-                </tr>
-                {/* ))} */}
-              </tbody>
-            </table>
-            <p className="text1">
-              Note: This table shows only 5 recently done transactions. View
-              Card History for complete history.
-            </p>
-          </Col>
-          <Col ms={4}>
-            <p className="yourvc">Your Virtual Card</p>
+                  </tr>
+                  {/* ))} */}
+                </tbody>
+              </table>
+              <p className="text1">
+                Note: This table shows only 5 recently done transactions. View
+                Card History for complete history.
+              </p>
+            </Col>
+            <Col ms={4}>
+              <p className="yourvc">Your Virtual Card</p>
 
-            <Card className="debitcard">
-              <Row>
-                <Col md={2}>
+              <Card className="debitcard">
+                <Row>
+                  <Col md={2}>
+                    <img
+                      src="shield.png"
+                      style={{ height: "40px", marginLeft: "50%" }}
+                    />
+                  </Col>
+                  <Col md={10}>
+                    <div className="cardname">Card Armour</div>
+                  </Col>
+                </Row>
+                <Row>
                   <img
-                    src="shield.png"
-                    style={{ height: "40px", marginLeft: "50%" }}
-                  />
-                </Col>
-                <Col md={10}>
-                  <div className="cardname">Card Armour</div>
-                </Col>
-              </Row>
-              <Row>
-                <img
-                  src="card.png"
-                  style={{
-                    height: "40px",
-                    width: "70px",
-                    marginLeft: "4.7%",
-                    marginTop: "3%",
-                  }}
-                />
-              </Row>
-              <Row>
-                <br></br>
-              </Row>
-              <Row>
-                <h2 className="cardnumber">XXXX-XXXX-XXXX-XXXX</h2>
-              </Row>
-              <Row>
-                <p className="cardexp">VALID THRU: 12/24</p>
-              </Row>
-              <Row>
-                <Col ms={6}>
-                  <h3 className="cardholdername">USERNAME</h3>
-                </Col>
-                <Col ms={6}>
-                  <img
-                    src="mastercard.png"
+                    src="card.png"
                     style={{
-                      height: "50px",
-                      marginLeft: "60%",
-                      marginTop: "-5%",
+                      height: "40px",
+                      width: "70px",
+                      marginLeft: "4.7%",
+                      marginTop: "3%",
                     }}
                   />
+                </Row>
+                <Row>
+                  <br></br>
+                </Row>
+                <Row>
+                  <h2 className="cardnumber">XXXX-XXXX-XXXX-XXXX</h2>
+                </Row>
+                <Row>
+                  <p className="cardexp">VALID THRU: 12/24</p>
+                </Row>
+                <Row>
+                  <Col ms={6}>
+                    <h3 className="cardholdername">USERNAME</h3>
+                  </Col>
+                  <Col ms={6}>
+                    <img
+                      src="mastercard.png"
+                      style={{
+                        height: "50px",
+                        marginLeft: "60%",
+                        marginTop: "-5%",
+                      }}
+                    />
+                  </Col>
+                </Row>
+              </Card>
+              <br></br>
+              {/* <Button
+                label="Generate New Card"
+                className="p-button-raised p-button-info"
+                style={{ marginLeft: "23%" }}
+              /> */}
+                <Button label="Generate New Card" icon="p-button-raised p-button-info" onClick={() => onClick('displayBasic')} style={{ marginLeft: "23%" }} />
+                <Dialog header="Enter Expiry Date" visible={displayBasic} style={{ width: '50vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+                <InputText
+                  id="username"
+                  value={expiryDate}
+                  onChange={(e) => setExpiryDate(e.target.value)}
+                  style={{ width: "222px" }}
+                />
+                </Dialog>
+              <Button
+                label="Delete Current Card"
+                className="p-button-raised p-button-danger"
+                style={{ marginLeft: "3%" }}
+              />
+              <br></br>
+              <Button
+                onClick={handleCardHistory}
+                label="See Card History"
+                className="p-button-raised p-button-help"
+                style={{ marginLeft: "39.5%", marginTop: "2%" }}
+              />
+              <Row style={{ marginTop: "10%" }}>
+                <Col md={6}>
+                  <Button
+                    onClick={handleSmsHistory}
+                    label="See SMS History"
+                    className="p-button-raised p-button-secondary"
+                    style={{ marginLeft: "50%" }}
+                  />
+                </Col>
+                <Col md={6}>
+                  <Button
+                    onClick={handleFeedbackHistory}
+                    label="See Feedback History"
+                    className="p-button-raised p-button-secondary"
+                    style={{ marginLeft: "5%" }}
+                  />
                 </Col>
               </Row>
-            </Card>
-            <br></br>
-            <Button
-              label="Generate New Card"
-              className="p-button-raised p-button-info"
-              style={{ marginLeft: "23%" }}
-            />
-            <Button
-              label="Delete Current Card"
-              className="p-button-raised p-button-danger"
-              style={{ marginLeft: "3%" }}
-            />
-            <br></br>
-            <Button
-              onClick={handleCardHistory}
-              label="See Card History"
-              className="p-button-raised p-button-help"
-              style={{ marginLeft: "39.5%", marginTop: "2%" }}
-            />
-          </Col>
-        </Row>
-      </div>}
+            </Col>
+          </Row>
+        </div>
+      )}
     </div>
   );
 };
 
-const mapStateToProps=({auth})=>{
+const mapStateToProps = ({ auth }) => {
   return {
-      loading:auth.loading,
-      error:auth.error
-}}
+    loading: auth.loading,
+    error: auth.error,
+  };
+};
 
 export default connect(mapStateToProps)(Homepage);

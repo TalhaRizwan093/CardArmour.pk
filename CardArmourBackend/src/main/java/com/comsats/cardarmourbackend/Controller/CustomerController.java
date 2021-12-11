@@ -20,6 +20,12 @@ public class CustomerController {
         return customerRepo.getIds();
     }
 
+    @PostMapping("/getCustomerIdByUserId")
+    public int getCustomerId(@RequestParam int userid){
+        try{
+            return customerRepo.getCustomerByUserId(userid);
+        }catch (Exception e){return 0;}
+    }
 
     @PostMapping("/addNewUserData")
     public boolean addCustomerData(@RequestBody Customer customer){

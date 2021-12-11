@@ -10,27 +10,66 @@ import { Calendar } from "primereact/calendar";
 import "./paymentmethod.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import  {addPayment, linkCustomer, getCustomerId}  from "../api/authenticationService";
 
 const PaymentMethod = () => {
-  const [date1, setDate1] = useState(null);
   const navigate = useNavigate();
+  const [cardholdername, setCardholdername] = useState("");
+  const [bankname, setBankname] = useState("");
+  const [cardnumber, setCardnumber] = useState("");
+  const [cvc, setCvc] = useState("");
+  const [expdate, setExpdate] = useState("");
+  const [accountid1, setAccountid] = useState("");
+  const [customerid1, setCustomerid] = useState("");
+  const [userid1, setUserid] = useState("");
+
   
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
+
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
+  const getID = () => {
+    return localStorage.getItem("USER_ID");
+  };
   let username = getToken();
-  
-  React.useEffect(()=>{
+  let userid = getID();
+
+  React.useEffect(() => {
+
     username = getToken();
-    if( username === "undefined" ||  username === null){
-      navigate('/');
+    
+    if (username === "undefined" || username === null) {
+      navigate("/");
     }
-  },[])
+
+
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userid = getID();
+    let customerid = null;
+    const data = {cardholdername, bankname, cardnumber, cvc, expdate}
+    addPayment(data).then((response) => {
+      let accountid = response.data
+      getCustomerId(userid).then((response) => {
+        customerid = response.data
+        console.log("asa",customerid);
+        console.log("account",accountid);
+        linkCustomer(accountid,customerid).then((response) => {
+          console.log("done", response)
+          navigate("/homepage");
+        })
+      })
+    })
+
+    console.log(data)
+  }
 
   const handleCancel = (e) => {
     e.preventDefault();
-    navigate('/homepage');
-  }
+    navigate("/homepage");
+  };
 
   return (
     <div
@@ -48,7 +87,7 @@ const PaymentMethod = () => {
         <br></br>
       </Row>
       <Row>
-        <h1 className="name">CardArmour.pk</h1>
+        <h1 className="namePaymentMethod">CardArmour.pk</h1>
       </Row>
       <Row>
         <Col xs={2}></Col>
@@ -66,37 +105,30 @@ const PaymentMethod = () => {
               <Col md={10}>
                 <div className="PaymentMethodTag">Add Payment Method</div>
               </Col>
-              <Col md={2}>
-                <Button
-                  icon="pi pi-times"
-                  className="p-button-rounded p-button-danger p-button-text"
-                  style={{
-                    marginLeft: "30%",
-                    marginBottom: "6%",
-                    marginTop: "-100%",
-                  }}
-                />
-              </Col>
             </Row>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-12">
-                <label htmlFor="cardholdername" style={{ marginLeft: "35%" }}>
+                <label htmlFor="cardholdername" style={{ marginLeft: "38.5%" }}>
                   Card Holder Name
                 </label>
                 <InputText
-                  id="firstname"
+                  id = "cardholdername"
+                  value = {cardholdername}
+                  onChange={(e) => setCardholdername(e.target.value)}
                   type="text"
                   placeholder="e.g. John Wich"
                 />
               </div>
 
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="bankname" style={{ marginLeft: "25%" }}>
+                <label htmlFor="bankname" style={{ marginLeft: "32.5%" }}>
                   Bank Name
                 </label>
                 <InputText
-                  id="firstname"
+                  id = "bankname"
+                  value = {bankname}
+                  onChange={(e) => setBankname(e.target.value)}
                   type="text"
                   placeholder="e.g. Tupac Bank"
                 />
@@ -106,7 +138,9 @@ const PaymentMethod = () => {
                   Card Number
                 </label>
                 <InputText
-                  id="cnic"
+                  id = "cardnumber"
+                  value = {cardnumber}
+                  onChange={(e) => setCardnumber(e.target.value)}
                   type="text"
                   placeholder="XXXX-XXXX-XXXX-XXXX"
                 />
@@ -115,22 +149,31 @@ const PaymentMethod = () => {
                 className="p-field p-col-12 p-md-6"
                 style={{ marginTop: "0.1%" }}
               >
-                <label htmlFor="cvc" style={{ marginLeft: "35%" }}>
+                <label htmlFor="cvc" style={{ marginLeft: "40%" }}>
                   CVC
                 </label>
-                <InputText id="cnic" type="text" placeholder="XXX" />
+                <InputText 
+                  id = "cvc"
+                  value = {cvc}
+                  onChange={(e) => setCvc(e.target.value)}
+                  type="text" placeholder="XXX" />
               </div>
 
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="cvc" style={{ marginLeft: "20%" }}>
+                <label htmlFor="cvc" style={{ marginLeft: "36%" }}>
                   Exp Date
                 </label>
-                <InputText id="cnic" type="text" placeholder="XXX" />
+                <InputText 
+                  id = "expdate"
+                  value = {expdate}
+                  onChange={(e) => setExpdate(e.target.value)}
+                  type="text" placeholder="XXX" />
               </div>
             </div>
             <Button
-              label="Add"
+              label="Confirm"
               className="p-button-rounded p-button-outlined"
+              onClick={handleSubmit}
               style={{
                 marginLeft: "28%",
                 marginTop: "2%",

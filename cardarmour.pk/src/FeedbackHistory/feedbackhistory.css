@@ -1,13 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-
-.nameFeedback {
-  margin-left: 42%;
+.nameCard {
+  margin-left: 38%;
   font-family: "Poppins", sans-serif;
   color: rgb(255, 255, 255);
 }
-
-.feedback {
-  text-align: center;
+.vcth {
+  margin-left: 46.5%;
   font-family: "Poppins", sans-serif;
-  color: black;
+  color: rgb(255, 255, 255);
 }

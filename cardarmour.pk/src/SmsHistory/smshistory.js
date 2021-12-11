@@ -1,4 +1,4 @@
-import "./cardhistory.css";
+import "./smshistory.css";
 import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
@@ -70,9 +70,15 @@ const Cardhistory = () => {
 
       <div>
         <br></br>
-        <h5 className="vcth">Virtual Card Transaction History</h5>
+        <h5 className="vcth">SMS History</h5>
       </div>
-      <div style={{ marginLeft: "15%", marginRight: "15%", marginTop: "2%" }}>
+      <div
+        style={{
+          marginLeft: "25%",
+          marginRight: "25%",
+          marginTop: "2%",
+        }}
+      >
         <table className="customers">
           <tr
             style={{
@@ -80,9 +86,7 @@ const Cardhistory = () => {
             }}
           >
             <th style={{ textAlign: "center" }}>Date</th>
-            <th style={{ textAlign: "center" }}>Comment</th>
-            <th style={{ textAlign: "center" }}>Status</th>
-            <th style={{ textAlign: "center" }}>Amount</th>
+            <th style={{ textAlign: "center" }}>Details</th>
           </tr>
           <tbody>
             {/* {products.map((product) => ( */}
@@ -90,9 +94,8 @@ const Cardhistory = () => {
               {/* <td>{titleLov[product.title - 1].title}</td> */}
               {/* <td>{CheckkTitle(product.title)}</td>
                     <td>{product.date}</td>
-                    <td>{product.comment}</td>
-                    <td>{product.status}</td>
-                    <td>{product.amount}</td> */}
+                    <td>{product.details}</td>
+                     */}
             </tr>
             {/* ))} */}
           </tbody>

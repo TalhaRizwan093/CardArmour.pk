@@ -10,58 +10,61 @@ import { Checkbox } from "primereact/checkbox";
 import { userLogin } from "../api/authenticationService";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useNavigate } from "react-router-dom";
-import { authenticate, authFailure, authSuccess } from '../redux/action-creators/index';
-import { connect } from 'react-redux';
-import {Alert} from 'react-bootstrap';
+import {
+  authenticate,
+  authFailure,
+  authSuccess,
+} from "../redux/action-creators/index";
+import { connect } from "react-redux";
+import { Alert } from "react-bootstrap";
 
-const Login = ({loading,error,...props}) => {
+const Login = ({ loading, error, ...props }) => {
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     localStorage.clear();
     props.loginFailure();
-  },[])
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { username, password };
     props.authenticate();
-    userLogin(data).then((response) =>{
-      if(response.status===200){
-        props.setUser(response.data);
-        navigate('/homepage');
-      }
-    else{
-      props.loginFailure('Bad Credentials!!, Try again');
-    }
-    }).catch((err) =>{
-      if(err && err.response){
-        switch(err.response.status){
+    userLogin(data)
+      .then((response) => {
+        if (response.status === 200) {
+          props.setUser(response.data);
+          navigate("/homepage");
+        } else {
+          props.loginFailure("Bad Credentials! Try again");
+        }
+      })
+      .catch((err) => {
+        if (err && err.response) {
+          switch (err.response.status) {
             case 401:
-                console.log("401 status");
-                props.loginFailure('Bad Credentials!!, Try again');
-                break;
+              console.log("401 status");
+              props.loginFailure("Bad Credentials! Try again");
+              break;
             default:
-                props.loginFailure('Bad Credentials!!, Try again');
+              props.loginFailure("Bad Credentials! Try again");
+          }
+        } else {
+          props.loginFailure("Server Down");
         }
-        }
-        else{
-             props.loginFailure('Server Down');
-             
-        }
-    });
-  }
-  
+      });
+  };
+
   const handleSignup = (e) => {
     e.preventDefault();
-    navigate('/signup');
-  }
+    navigate("/signup");
+  };
 
   return (
     <div
@@ -93,7 +96,7 @@ const Login = ({loading,error,...props}) => {
             <br></br>
           </Row>
           <Row>
-            <h1 className="name">CardArmour.pk</h1>
+            <h1 className="nameLogin">CardArmour.pk</h1>
           </Row>
           <Row
             className="p-shadow-24"
@@ -173,12 +176,11 @@ const Login = ({loading,error,...props}) => {
                 className="p-button-rounded p-button-outlined"
                 style={{ marginLeft: "42%", marginTop: "2%" }}
               />
-                      { error &&
-        <Alert style={{marginTop:'20px'}} variant="danger">
-         {error}
-          </Alert>
-          
-         }
+              {error && (
+                <Alert style={{ marginTop: "20px" }} variant="danger">
+                  {error}
+                </Alert>
+              )}
 
               <p className="secondarylogin">Or login with</p>
               <div
@@ -221,18 +223,19 @@ const Login = ({loading,error,...props}) => {
   );
 };
 
-const mapStateToProps=({auth})=>{
+const mapStateToProps = ({ auth }) => {
   return {
-      loading:auth.loading,
-      error:auth.error
-}}
+    loading: auth.loading,
+    error: auth.error,
+  };
+};
 
-const mapDispatchToProps=(dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
   return {
-      authenticate :()=> dispatch(authenticate()),
-      setUser:(data)=> dispatch(authSuccess(data)),
-      loginFailure:(message)=>dispatch(authFailure(message))
-  }
-}
+    authenticate: () => dispatch(authenticate()),
+    setUser: (data) => dispatch(authSuccess(data)),
+    loginFailure: (message) => dispatch(authFailure(message)),
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
