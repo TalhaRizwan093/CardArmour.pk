@@ -9,7 +9,7 @@ import java.sql.Date;
 public interface VirtualCardRepository extends JpaRepository<VirtualCard,Integer> {
 
     @Query(value="INSERT INTO \"CARDARMOUR\".\"Virtual Card\" (CARDID, CARDHOLDERNAME, \"card number\", CVC, EXPDATE) VALUES (?1,?2,?3,?4,?5)",nativeQuery = true)
-    boolean addVirtualCard(int cardid, String cardholdername, String cardnumber, int cvc, Date expdate);
+    int addVirtualCard(int cardid, String cardholdername, String cardnumber, int cvc, Date expdate);
 
 
     @Query(value="DELETE FROM \"Virtual Card\" WHERE cardid = ?1 ",nativeQuery = true)

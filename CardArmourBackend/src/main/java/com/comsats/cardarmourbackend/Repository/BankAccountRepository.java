@@ -17,7 +17,4 @@ public interface BankAccountRepository extends JpaRepository<BankAccount,Integer
     @Query(value="DELETE FROM \"Bank Account\" WHERE accountid = ?1",nativeQuery = true)
     boolean deletePaymentMethod(int accountid);
 
-    @Query(value="SELECT \"Bank Account\".accountid FROM \"Bank Account\" JOIN \"Customer Bank Account\" ON \"Bank Account\".accountid = \"Customer Bank Account\".accountid JOIN CUSTOMER ON customer.customerid = \"Customer Bank Account\".customerid where customer.customerid = ?1",nativeQuery = true)
-    int getBankAccountId(int userid);
-
 }

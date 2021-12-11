@@ -6,12 +6,11 @@ import javax.persistence.*;
 @Table(name = "Card Link", schema = "CARDARMOUR", catalog = "")
 public class CardLink {
     private int linkid;
-    private String linkstatus;
+    private int linkstatus;
     private int bankaccountid;
     private int virtualcardid;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "LINKID")
     public int getLinkid() {
         return linkid;
@@ -23,11 +22,11 @@ public class CardLink {
 
     @Basic
     @Column(name = "LINKSTATUS")
-    public String getLinkstatus() {
+    public int getLinkstatus() {
         return linkstatus;
     }
 
-    public void setLinkstatus(String linkstatus) {
+    public void setLinkstatus(int linkstatus) {
         this.linkstatus = linkstatus;
     }
 
@@ -59,9 +58,9 @@ public class CardLink {
         CardLink cardLink = (CardLink) o;
 
         if (linkid != cardLink.linkid) return false;
+        if (linkstatus != cardLink.linkstatus) return false;
         if (bankaccountid != cardLink.bankaccountid) return false;
         if (virtualcardid != cardLink.virtualcardid) return false;
-        if (linkstatus != null ? !linkstatus.equals(cardLink.linkstatus) : cardLink.linkstatus != null) return false;
 
         return true;
     }
@@ -69,7 +68,7 @@ public class CardLink {
     @Override
     public int hashCode() {
         int result = linkid;
-        result = 31 * result + (linkstatus != null ? linkstatus.hashCode() : 0);
+        result = 31 * result + linkstatus;
         result = 31 * result + bankaccountid;
         result = 31 * result + virtualcardid;
         return result;

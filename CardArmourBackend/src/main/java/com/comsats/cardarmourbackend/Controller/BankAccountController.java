@@ -16,7 +16,9 @@ public class BankAccountController {
 
     @PostMapping("/getBankPaymentById")
     public BankAccount getBankAccountByUserId(@RequestParam int userid){
+
         return bankRepo.getBankAccountByUserId(userid);
+
     }
 
     @PostMapping("/addPaymentMethod")
@@ -36,11 +38,6 @@ public class BankAccountController {
         }  catch(Exception e){
         }
         return true;
-    }
-
-    @PostMapping("/getBankPaymentId")
-    public int getBankAccountId(@RequestParam int userid){
-        return bankRepo.getBankAccountId(userid);
     }
 
 

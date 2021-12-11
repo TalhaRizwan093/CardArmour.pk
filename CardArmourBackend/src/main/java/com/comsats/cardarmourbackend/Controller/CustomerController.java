@@ -15,17 +15,18 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepo;
 
-    @GetMapping("/getCustomerIds")
-    public List<Integer> getIds(){
-        return customerRepo.getIds();
-    }
-
     @PostMapping("/getCustomerIdByUserId")
     public int getCustomerId(@RequestParam int userid){
         try{
             return customerRepo.getCustomerByUserId(userid);
         }catch (Exception e){return 0;}
     }
+
+    @GetMapping("/getCustomerIds")
+    public List<Integer> getIds(){
+        return customerRepo.getIds();
+    }
+
 
     @PostMapping("/addNewUserData")
     public boolean addCustomerData(@RequestBody Customer customer){

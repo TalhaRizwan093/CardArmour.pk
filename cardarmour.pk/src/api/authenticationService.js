@@ -93,6 +93,48 @@ export const generateVirtualCard = async (cardholdername,expdate) => {
   });
 };
 
+export const linkVirtualCard = async (bankaccountid,virtualcardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/linkcards", 
+    params: {bankaccountid,virtualcardid}
+  });
+};
+
+export const getVirtualCard = async (accountid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getVirtualCard", 
+    params: {accountid}
+  });
+};
+
+
+
+export const deleteVirtualCard = async (cardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/deleteVirtualCard", 
+    params: {cardid}
+  });
+};
+
+export const getFiveTransactions = async (virtualcardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getFiveTransactions", 
+    params: {virtualcardid}
+  });
+};
+
+export const getTransactions = async (virtualcardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getFiveTransactions", 
+    params: {virtualcardid}
+  });
+};
+
 
 
 

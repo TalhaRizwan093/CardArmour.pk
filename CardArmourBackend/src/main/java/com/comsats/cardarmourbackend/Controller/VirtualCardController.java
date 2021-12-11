@@ -25,9 +25,10 @@ public class VirtualCardController {
     }
 
     @PostMapping("/generateVirtualCard")
-    public boolean addVirtualCard(@RequestParam String cardholdername,@RequestParam Date expdate){
+    public int addVirtualCard(@RequestParam String cardholdername,Date expdate){
+        VirtualCard virtualCard = new VirtualCard();
         try{
-            VirtualCard virtualCard = new VirtualCard();
+
             virtualCard.setCardid(generateId());
             virtualCard.setCardholdername(cardholdername);
             virtualCard.setCardNumber(generateCardNumber());
@@ -36,7 +37,7 @@ public class VirtualCardController {
             vcRepo.addVirtualCard(virtualCard.getCardid(),virtualCard.getCardholdername(),virtualCard.getCardNumber(),virtualCard.getCvc(),virtualCard.getExpdate());
         } catch(Exception e){
         }
-        return true;
+        return virtualCard.getCardid();
     }
 
     @PostMapping("/deleteVirtualCard")
