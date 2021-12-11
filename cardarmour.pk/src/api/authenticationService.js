@@ -135,6 +135,42 @@ export const getTransactions = async (virtualcardid) => {
   });
 };
 
+export const addFeedback = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/addFeedback",
+    data: data,
+  });
+};
+
+export const totalSpending = async (virtualcardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getTotalSpending", 
+    params: {virtualcardid}
+  });
+};
+
+export const totlaTransactions = async (virtualcardid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getTotalTransactions", 
+    params: {virtualcardid}
+  });
+};
+
+export const getFeedback = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getFeedbackById", 
+    params: {customerid}
+  });
+};
+
+
+
+
+
 
 
 

@@ -2,21 +2,32 @@ import "./feedbackhistory.css";
 import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
+import { getFeedback } from "../api/authenticationService"
 
 const Feedbackhistory = () => {
   const navigate = useNavigate();
+  const [feedbacks, setFeedbacks] = useState([]);
+ // const [cid, setCustomerid] = useState("");
 
   const getToken = () => {
     return localStorage.getItem("USER_KEY");
+  };
+  const getCustomerId = () => {
+    return localStorage.getItem("C_ID");
   };
   let username = getToken();
 
   React.useEffect(() => {
     username = getToken();
+    const customerid = getCustomerId();
     if (username === "undefined" || username === null) {
       navigate("/");
     }
+    getFeedback(customerid).then((response) => {
+      setFeedbacks(response.data)
+    })
+
   }, []);
 
   const handleReturnHome = (e) => {
@@ -70,7 +81,7 @@ const Feedbackhistory = () => {
 
       <div>
         <br></br>
-        <h5 className="vcth">Feedback History</h5>
+        <h5 className="fh">Feedback History</h5>
       </div>
       <div
         style={{
@@ -89,15 +100,16 @@ const Feedbackhistory = () => {
             <th style={{ textAlign: "center" }}>Admin Reply</th>
           </tr>
           <tbody>
-            {/* {products.map((product) => ( */}
-            <tr>
-              {/* <td>{titleLov[product.title - 1].title}</td> */}
-              {/* <td>{CheckkTitle(product.title)}</td>
-                    <td>{product.date}</td>
-                    <td>{product.details}</td>
-                     */}
-            </tr>
-            {/* ))} */}
+            {feedbacks.map((feedback) => (
+              <tr>
+                {/* <td>{titleLov[product.title - 1].title}</td>
+                    <td>{CheckkTitle(product.title)}</td> */}
+                <td>{feedback.detail}</td>
+                {/* <td>{feedback}</td> */}
+                {/* <td>{transaction.comment}</td>
+                <td>{transaction.amount}</td> */}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

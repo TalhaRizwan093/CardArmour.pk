@@ -49,6 +49,7 @@ const Homepage = ({ loading, error, ...props }) => {
     }
     getCustomerId(id).then((response) => {
       userid = response.data
+      localStorage.setItem('C_ID',response.data);
       getBankAccount(userid).then((response) => {
         setBankName(response.data.bankname)
         setCardNumber(response.data.cardnumber)

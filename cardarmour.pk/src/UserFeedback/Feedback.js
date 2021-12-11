@@ -5,14 +5,20 @@ import { InputTextarea } from "primereact/inputtextarea";
 import React, { useState } from "react";
 import "./Feedback.css";
 import { useNavigate } from "react-router-dom";
+import { addFeedback } from "../api/authenticationService";
 
 const Feedback = () => {
-  const [value2, setValue2] = useState("");
+  const [detail, setDetail] = useState("");
   const navigate = useNavigate();
 
   const getToken = () => {
     return localStorage.getItem("USER_KEY");
   };
+
+  const getCustomerId = () => {
+    return localStorage.getItem("C_ID");
+  };
+
   let username = getToken();
 
   React.useEffect(() => {
@@ -26,6 +32,18 @@ const Feedback = () => {
     e.preventDefault();
     navigate("/homepage");
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const customerid = getCustomerId();
+    const date = new Date();
+    const data = {detail,customerid,date};
+    addFeedback(data).then((response) => {
+      alert("Feedback saved")
+    })
+    console.log(data)
+
+  }
 
   return (
     <div
@@ -67,8 +85,8 @@ const Feedback = () => {
                       Please Explain in detail:
                     </h5>
                     <InputTextarea
-                      value={value2}
-                      onChange={(e) => setValue2(e.target.value)}
+                      value={detail}
+                      onChange={(e) => setDetail(e.target.value)}
                       rows={10}
                       cols={40}
                       autoResize
@@ -78,6 +96,7 @@ const Feedback = () => {
                 <Col md={2}></Col>
               </Row>
               <Button
+                onClick={handleSubmit}
                 label="Submit"
                 className="p-button-rounded p-button-outlined"
                 style={{
