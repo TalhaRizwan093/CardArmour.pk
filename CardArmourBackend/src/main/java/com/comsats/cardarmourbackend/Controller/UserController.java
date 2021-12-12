@@ -49,6 +49,16 @@ public class UserController {
         }
     }
 
+    @PostMapping("/getUser")
+    public SystemUser getUser(@RequestParam int userid){
+        try{
+            return userRepo.getUser(userid);
+        } catch(Exception e){
+            return null;
+        }
+
+    }
+
 
 
     @PostMapping("/getUserId")

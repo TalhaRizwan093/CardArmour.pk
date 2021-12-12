@@ -29,7 +29,7 @@ public class CustomerController {
 
 
     @PostMapping("/addNewUserData")
-    public boolean addCustomerData(@RequestBody Customer customer){
+    public int addCustomerData(@RequestBody Customer customer){
         Customer newCustomer = customer;
         newCustomer.setCustomerid(generateId());
         try{
@@ -37,8 +37,26 @@ public class CustomerController {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return true;
+        return customer.getCustomerid();
+    }
 
+    @PostMapping("/getCustomer")
+    public Customer getCustomer(@RequestParam int userid){
+        try{
+            return customerRepo.getCustomerByUserid(userid);
+        } catch(Exception e){
+            return null;
+        }
+    }
+
+    @PostMapping("/updateCustomer")
+    public boolean updateCustomer(@RequestBody Customer customer){
+        try{
+            customerRepo.updateCustomer(customer.getName(),customer.getGender(),customer.getCnic(),customer.getDob(),customer.getAge(),customer.getEmail(),customer.getCityid(),customer.getUserid());
+        } catch(Exception e){
+
+        }
+        return true;
     }
 
     private int generateId(){

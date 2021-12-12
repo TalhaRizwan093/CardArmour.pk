@@ -2,21 +2,32 @@ import "./smshistory.css";
 import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useState }  from "react";
+import { getSms } from "../api/authenticationService"
 
 const Cardhistory = () => {
   const navigate = useNavigate();
+  const [sms, setSms] = useState([]);
 
   const getToken = () => {
     return localStorage.getItem("USER_KEY");
   };
+  const getCustomerId = () => {
+    return localStorage.getItem("C_ID");
+  };
   let username = getToken();
+  let customerid = getCustomerId();
 
   React.useEffect(() => {
+    customerid = getCustomerId();
     username = getToken();
     if (username === "undefined" || username === null) {
       navigate("/");
     }
+    console.log(customerid);
+    getSms(customerid).then((response) => {
+      setSms(response.data)
+    })
   }, []);
 
   const handleReturnHome = (e) => {
@@ -89,15 +100,17 @@ const Cardhistory = () => {
             <th style={{ textAlign: "center" }}>Details</th>
           </tr>
           <tbody>
-            {/* {products.map((product) => ( */}
-            <tr>
-              {/* <td>{titleLov[product.title - 1].title}</td> */}
-              {/* <td>{CheckkTitle(product.title)}</td>
-                    <td>{product.date}</td>
-                    <td>{product.details}</td>
-                     */}
-            </tr>
-            {/* ))} */}
+          {sms.map((sms_) => (
+              <tr>
+                {/* <td>{titleLov[product.title - 1].title}</td>
+                    <td>{CheckkTitle(product.title)}</td> */}
+                <td>{sms_.time}</td>
+                <td>{sms_.details}</td>
+                {/* <td>{feedback}</td> */}
+                {/* <td>{transaction.comment}</td>
+                <td>{transaction.amount}</td> */}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

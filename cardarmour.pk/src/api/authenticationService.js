@@ -15,10 +15,11 @@ export const countriesAPI = async () => {
   });
 };
 
-export const citiesAPI = async () => {
+export const citiesAPI = async (countryid) => {
   return await axios({
-    method: "GET",
+    method: "POST",
     url: "http://localhost:8080/getCities",
+    params: {countryid}
   });
 };
 
@@ -167,6 +168,77 @@ export const getFeedback = async (customerid) => {
   });
 };
 
+export const getSms = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getSmsHistory", 
+    params: {customerid}
+  });
+};
+
+export const getSettings = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getSetting", 
+    params: {userid}
+  });
+};
+
+export const getUser = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getUser", 
+    params: {userid}
+  });
+};
+
+export const getCustomer = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getCustomer", 
+    params: {userid}
+  });
+};
+
+export const updateCustomer = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/updateCustomer", 
+    data: data,
+  });
+};
+
+export const addPhoneNumber = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/addPhoneNumber", 
+    data: data,
+  });
+};
+
+export const getPhonenumber = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getPhoneNumber", 
+    params: {customerid}
+  });
+};
+
+export const getCityByCustomer = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getCityByCustomer", 
+    params: {customerid}
+  });
+};
+
+export const getCountryByCustomer = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getCountryByCustomer", 
+    params: {customerid}
+  });
+};
 
 
 
