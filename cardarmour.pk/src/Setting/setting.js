@@ -7,26 +7,35 @@ import { InputText } from "primereact/inputtext";
 import React, { useState } from "react";
 import { Password } from "primereact/password";
 import { useNavigate } from "react-router-dom";
-import { getSettings, getUser, getCustomer, updateCustomer, getPhonenumber,countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer } from "../api/authenticationService"
+import { getSettings, getUser, getCustomer, updateCustomer, getPhonenumber, countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer } from "../api/authenticationService"
 
 const Setting = () => {
   const [selectedLanguage, setLanguage] = useState(null);
   const [selectedTimeFormat, setTimeFormat] = useState(null);
   const [selectedMode, setMode] = useState(null);
   const [name, setName] = useState(null);
-  const [gender, setGender] = useState(null);
+  const [gender_i, setGender_i] = useState(null);
+  const [gender_p, setGender_p] = useState(null);
   const [cnic, setCnic] = useState(null);
   const [dob, setDob] = useState(null);
   const [email, setEmail] = useState(null);
   const [phonenumber, setPhonenumber] = useState(null);
-  const [country, setCountry] = useState(null);
+  const [country_i, setCountry] = useState(null);
   const [countries, setCountries] = useState(null);
-  const [cities, setCities] = useState(null);
-  const [city, setCity] = useState(null);
+  const [cities, setCities] = useState([]);
+  const [city_i, setCity] = useState(null);
+  const [city_p, setCity_p] = useState(null);
+  const [country_p, setCountry_p] = useState(null);
+  const [age, setAge] = useState(null);
 
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
   const navigate = useNavigate();
+
+  const genders = [
+    { name: 'Male' },
+    { name: 'Female' },
+  ];
 
   const languages = [
     { language: "English", code: "EN" },
@@ -54,6 +63,11 @@ const Setting = () => {
     return localStorage.getItem("C_ID");
   };
 
+  const onGenderChange = (e) => {
+    setGender_i(e.value)
+
+  }
+
   let userName = getToken();
   let userid = getUserId();
   let customerid = getCustomerId();
@@ -77,12 +91,13 @@ const Setting = () => {
     })
     getCustomer(userid).then((response) => {
       setName(response.data.name)
-      setGender(response.data.gender)
+      setGender_p(response.data.gender)
+      setGender_i(response.data.gender)
       setCnic(response.data.cnic)
       setDob(response.data.dob)
       setEmail(response.data.email)
-      setCountry(response.data.city)
-      setCity(response.data.country)
+      setCity(response.data.city)
+      setAge(response.data.age)
     })
     getPhonenumber(customerid).then((response) => {
       setPhonenumber(response.data.phonenumber);
@@ -94,12 +109,15 @@ const Setting = () => {
     );
 
     getCityByCustomer(customerid).then((response) => {
-      setCity(response.data.name)
+      setCity_p(response.data.name);
+      setCity(response.data);
+      console.log("cities",response);
     })
 
     getCountryByCustomer(customerid).then((response) => {
-      // console.log(response)
-      // setCity(response.data.name)
+      console.log("country", response)
+      setCountry_p(response.data.name)
+      setCountry(response.data.name)
     })
 
   }, []);
@@ -126,11 +144,20 @@ const Setting = () => {
 
   const handleConfirm = (e) => {
     e.preventDefault();
-    const data = {name, gender, cnic, dob, phonenumber, email, city, country}
+    console.log("city",city_i)
+    const cityid = city_i.cityid
+    const gender = gender_i.name
+    const data = { name, gender, cnic, dob, age, phonenumber, email, cityid, userid }
+    console.log("update data", data)
+    updateCustomer(data).then((response) => {
+      console.log("done", response)
+      alert("New Data added")
+    })
   };
 
   const onCountryChange = (e) => {
-    console.log(e.value)
+    e.preventDefault();
+    console.log("coutnry change", e.value)
     setCountry(e.value)
     let countryid = e.value.countryid
     citiesAPI(countryid).then((response) => {
@@ -139,12 +166,13 @@ const Setting = () => {
       setCities(data);
     }
     );
-    
+
   }
 
   const onCityChange = (e) => {
+    e.preventDefault();
     setCity(e.value)
-    
+
   }
 
 
@@ -293,11 +321,11 @@ const Setting = () => {
                   </label>
                   <Dropdown
                     inputId="gender"
-                    value={gender}
-                    // options={states}
-                    onChange={(e) => setGender(e.target.value)}
-                    placeholder={gender}
-                    optionLabel={gender}
+                    value={gender_i}
+                    options={genders}
+                    onChange={onGenderChange}
+                    placeholder={gender_p}
+                    optionLabel="name"
                   />
                 </div>
                 <div className="p-field p-col-12 p-md-7">
@@ -351,12 +379,12 @@ const Setting = () => {
                     Country
                   </label>
                   <Dropdown
-                  inputId="state"
-                  value={country}
-                  options={countries}
-                  onChange={onCountryChange}
-                  placeholder="Select"
-                  optionLabel="name"
+                    inputId="state"
+                    value={country_i}
+                    options={countries}
+                    onChange={onCountryChange}
+                    placeholder={country_p}
+                    optionLabel="name"
                   />
                 </div>
                 <div className="p-field p-col-12 p-md-6">
@@ -364,12 +392,12 @@ const Setting = () => {
                     City
                   </label>
                   <Dropdown
-                  inputId="city"
-                  value={city}
-                  options={cities}
-                  onChange={onCityChange}
-                  placeholder={city}
-                  optionLabel="name"
+                    inputId="city"
+                    value={city_i}
+                    options={cities}
+                    onChange={onCityChange}
+                    placeholder={city_p}
+                    optionLabel="name"
                   />
                 </div>
               </div>
