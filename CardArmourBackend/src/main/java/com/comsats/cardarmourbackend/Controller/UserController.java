@@ -59,6 +59,14 @@ public class UserController {
 
     }
 
+    @PostMapping("/updateUser")
+    public void updateUser(@RequestBody SystemUser user){
+        try{
+            userRepo.updateUser(user.getUsername(),user.getPassword(),user.getUserid());
+        } catch(Exception e){
+        }
+    }
+
 
 
     @PostMapping("/getUserId")
@@ -70,4 +78,5 @@ public class UserController {
         Random rand = new Random();
         return rand.nextInt(10000000);
     }
+
 }

@@ -13,5 +13,8 @@ public interface SettingRepository extends JpaRepository<Setting,Integer> {
     @Query(value="UPDATE \"CARDARMOUR\".\"SETTING\" SET LANGUAGE = ?1, TIMEFORMAT = ?2, \"light/dark_mode\" = ?3 where userid = ?4",nativeQuery = true)
     boolean updateSetting(String language,String timeformat,String mode, int userid);
 
+    @Query(value="INSERT INTO \"CARDARMOUR\".\"SETTING\" (SETTINGID, LANGUAGE, TIMEFORMAT, \"light/dark_mode\", USERID) VALUES (?1,?2,?3,?4,?5)",nativeQuery = true)
+    void addSetting(int settingid,String language,String timeformat,String mode,int userid);
+
 
 }

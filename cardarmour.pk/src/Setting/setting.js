@@ -7,12 +7,15 @@ import { InputText } from "primereact/inputtext";
 import React, { useState } from "react";
 import { Password } from "primereact/password";
 import { useNavigate } from "react-router-dom";
-import { getSettings, getUser, getCustomer, updateCustomer, getPhonenumber, countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer } from "../api/authenticationService"
+import { setSetting, updateSetting, getSettings, getUser, getCustomer, updateCustomer, getPhonenumber, countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer, updateUser } from "../api/authenticationService"
 
 const Setting = () => {
   const [selectedLanguage, setLanguage] = useState(null);
+  const [selectedLanguage_p, setLanguage_p] = useState(null);
   const [selectedTimeFormat, setTimeFormat] = useState(null);
+  const [selectedTimeFormat_p, setTimeFormat_p] = useState(null);
   const [selectedMode, setMode] = useState(null);
+  const [selectedMode_p, setMode_p] = useState(null);
   const [name, setName] = useState(null);
   const [gender_i, setGender_i] = useState(null);
   const [gender_p, setGender_p] = useState(null);
@@ -27,10 +30,11 @@ const Setting = () => {
   const [city_p, setCity_p] = useState(null);
   const [country_p, setCountry_p] = useState(null);
   const [age, setAge] = useState(null);
-
+  const [settingCheck, setSettingCheck] = useState(false);
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
   const navigate = useNavigate();
+  let gender = null;
 
   const genders = [
     { name: 'Male' },
@@ -71,19 +75,27 @@ const Setting = () => {
   let userName = getToken();
   let userid = getUserId();
   let customerid = getCustomerId();
+  let lang,time,LDmode;
   React.useEffect(() => {
     userName = getToken();
     userid = getUserId();
     customerid = getCustomerId();
-    console.log(userid);
     if (userName === "undefined" || userName === null) {
       navigate("/");
     }
     getSettings(userid).then((response) => {
-      console.log("setting", response)
       setLanguage(response.data.language)
+      setLanguage_p(response.data.language)
       setTimeFormat(response.data.timeformat)
+      setTimeFormat_p(response.data.timeformat)
       setMode(response.data.lightDarkMode)
+      setMode_p(response.data.lightDarkMode)
+      lang = response.data.language
+      time = response.data.timeformat
+      LDmode = response.data.lightDarkMode
+      if (LDmode === undefined && time === undefined && lang === undefined) {
+        setSettingCheck(true);
+      }
     })
     getUser(userid).then((response) => {
       setPassword(response.data.password);
@@ -111,14 +123,15 @@ const Setting = () => {
     getCityByCustomer(customerid).then((response) => {
       setCity_p(response.data.name);
       setCity(response.data);
-      console.log("cities",response);
+
     })
 
     getCountryByCustomer(customerid).then((response) => {
-      console.log("country", response)
+
       setCountry_p(response.data.name)
       setCountry(response.data.name)
     })
+
 
   }, []);
 
@@ -144,15 +157,72 @@ const Setting = () => {
 
   const handleConfirm = (e) => {
     e.preventDefault();
-    console.log("city",city_i)
-    const cityid = city_i.cityid
-    const gender = gender_i.name
+    console.log("settingCheck",settingCheck)
+    let language, timeformat, lightDarkMode;
+    if(settingCheck === true){
+      if (gender_i.name === undefined || gender_i.name === null) {
+        gender = gender_i;
+      }
+      else {
+        gender = gender_i.name;
+      }
+      const cityid = city_i.cityid
+
     const data = { name, gender, cnic, dob, age, phonenumber, email, cityid, userid }
-    console.log("update data", data)
+    const userdata = { username, password, userid }
+    language = selectedLanguage.language;
+    timeformat = selectedTimeFormat.language;
+    lightDarkMode = selectedMode.language;
+    const settingData = { language, timeformat, lightDarkMode, userid }
+    console.log("setting", settingData)
     updateCustomer(data).then((response) => {
-      console.log("done", response)
-      alert("New Data added")
+      updateUser(userdata).then((response) => {
+        setSetting(settingData).then((response) => {
+        })
+        navigate("/homepage")
+      })
     })
+    }
+    else{
+      if (gender_i.name === undefined || gender_i.name === null) {
+        gender = gender_i;
+      }
+      else {
+        gender = gender_i.name;
+      }
+      if (selectedLanguage.language === undefined || selectedLanguage.language === null) {
+        language = selectedLanguage;
+      }
+      else {
+        language = selectedLanguage.language;
+      }
+      if (selectedTimeFormat.language === undefined || selectedTimeFormat.language === null) {
+        timeformat = selectedTimeFormat;
+      }
+      else {
+        timeformat = selectedTimeFormat.language;
+      }
+      if (selectedMode.language === undefined || selectedMode.language === null) {
+        lightDarkMode = selectedMode;
+      }
+      else {
+        lightDarkMode = selectedMode.language;
+      }
+      const cityid = city_i.cityid
+  
+      const data = { name, gender, cnic, dob, age, phonenumber, email, cityid, userid }
+      const userdata = { username, password, userid }
+      const settingData = { language, timeformat, lightDarkMode, userid }
+      console.log("setting", settingData)
+      updateCustomer(data).then((response) => {
+        updateUser(userdata).then((response) => {
+          updateSetting(settingData).then((response) => {
+          })
+          navigate("/homepage")
+        })
+      })
+    }
+
   };
 
   const onCountryChange = (e) => {
@@ -221,7 +291,7 @@ const Setting = () => {
                 value={selectedLanguage}
                 options={languages}
                 onChange={onLanguageChange}
-                placeholder={selectedLanguage}
+                placeholder={selectedLanguage_p}
                 optionLabel="language"
               />
             </div>
@@ -234,7 +304,7 @@ const Setting = () => {
                 value={selectedTimeFormat}
                 options={timeformat}
                 onChange={onFormatChange}
-                placeholder={selectedTimeFormat}
+                placeholder={selectedTimeFormat_p}
                 optionLabel="language"
               />
             </div>
@@ -247,7 +317,7 @@ const Setting = () => {
                 value={selectedMode}
                 options={mode}
                 onChange={onModeChange}
-                placeholder={selectedMode}
+                placeholder={selectedMode_p}
                 optionLabel="language"
               />
             </div>

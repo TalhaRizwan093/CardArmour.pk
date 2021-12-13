@@ -240,6 +240,30 @@ export const getCountryByCustomer = async (customerid) => {
   });
 };
 
+export const updateUser = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/updateUser", 
+    data: data
+  });
+};
+
+export const updateSetting = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/updateSetting", 
+    data: data
+  });
+};
+
+export const setSetting = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/addSetting", 
+    data: data
+  });
+};
+
 
 
 

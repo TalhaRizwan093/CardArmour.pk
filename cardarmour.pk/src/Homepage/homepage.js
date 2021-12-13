@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Dialog } from 'primereact/dialog';
 import { InputText } from "primereact/inputtext";
-import { getCustomerId, getBankAccount, deletePaymentMethod, generateVirtualCard, linkVirtualCard, getVirtualCard, deleteVirtualCard, getFiveTransactions } from "../api/authenticationService";
+import { getUser, getCustomerId, getBankAccount, deletePaymentMethod, generateVirtualCard, linkVirtualCard, getVirtualCard, deleteVirtualCard, getFiveTransactions } from "../api/authenticationService";
 
 
 const Homepage = ({ loading, error, ...props }) => {
@@ -25,6 +25,7 @@ const Homepage = ({ loading, error, ...props }) => {
   const [validity, setValidity] = useState("");
   const [cvc, setCVC] = useState("");
   const [transactions, setTransactions] = useState([]);
+  const [username, setUsername] = useState("");
 
 
   let userid = null;
@@ -36,17 +37,21 @@ const Homepage = ({ loading, error, ...props }) => {
   const getID = () => {
     return localStorage.getItem("USER_ID");
   };
-  let username = getToken();
+  //let username = null;
   let id = getID();
 
 
   React.useEffect(() => {
     loading = true;
-    username = getToken();
-
-    if (username === "undefined" || username === null) {
+    const username_= getToken();
+    getUser(id).then((response) => {
+      setUsername(response.data.username);
+    })
+    if (username_ === "undefined" || username_ === null) {
       navigate("/");
     }
+
+
     getCustomerId(id).then((response) => {
       userid = response.data
       localStorage.setItem('C_ID',response.data);
