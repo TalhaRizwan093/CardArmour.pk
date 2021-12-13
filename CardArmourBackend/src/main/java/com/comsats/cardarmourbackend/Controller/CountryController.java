@@ -14,17 +14,18 @@ public class CountryController {
     @Autowired
     private CountryRepository countryRepo;
 
-    @GetMapping("/getCountries")
-    public List<Country> getCountries(){
-        return countryRepo.getCountries();
-    }
-
     @PostMapping("/getCountryByCustomer")
     public Country getCountry(@RequestParam int customerid){
         try{
             return countryRepo.getCountryByCustomerId(customerid);
         } catch (Exception e){
+            e.printStackTrace();
             return null;
         }
+    }
+
+    @GetMapping("/getCountries")
+    public List<Country> getCountries(){
+        return countryRepo.getCountries();
     }
 }

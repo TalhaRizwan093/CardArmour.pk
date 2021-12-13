@@ -15,37 +15,37 @@ public class PhoneBookController {
     PhoneBookRepository phoneBookRepository;
 
     @PostMapping("/addPhoneNumber")
-    boolean addPhoneNumber(@RequestBody PhoneBook phoneBook) {
-        try {
+    boolean addPhoneNumber(@RequestBody PhoneBook phoneBook){
+        try{
             phoneBook.setPhonenumberid(generateId());
-            phoneBookRepository.addPhoneNumber(phoneBook.getPhonenumberid(), phoneBook.getPhonenumber(), phoneBook.getCustomerid());
-        } catch (Exception e) {
+            phoneBookRepository.addPhoneNumber(phoneBook.getPhonenumberid(),phoneBook.getPhonenumber(),phoneBook.getCustomerid());
+        }catch(Exception e){
 
         }
         return true;
     }
 
     @PostMapping("/updatePhoneNumber")
-    boolean updatePhoneNumber(@RequestBody PhoneBook phoneBook) {
-        try {
-            phoneBookRepository.updatePhoneNumber(phoneBook.getPhonenumber(), phoneBook.getCustomerid());
-        } catch (Exception e) {
+    boolean updatePhoneNumber(@RequestBody PhoneBook phoneBook){
+        try{
+            phoneBookRepository.updatePhoneNumber(phoneBook.getPhonenumber(),phoneBook.getCustomerid());
+        } catch(Exception e){
 
         }
         return true;
     }
 
     @PostMapping("/getPhoneNumber")
-    PhoneBook getPhoneNumber(@RequestParam int customerid) {
-        try {
+    PhoneBook getPhoneNumber(@RequestParam int customerid){
+        try{
             return phoneBookRepository.getPhoneNumber(customerid);
-        } catch (Exception e) {
+        } catch(Exception e){
             return null;
         }
     }
 
 
-    private int generateId() {
+    private int generateId(){
         Random rand = new Random();
         return rand.nextInt(10000000);
     }

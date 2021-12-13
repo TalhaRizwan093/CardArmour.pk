@@ -26,7 +26,7 @@ public class UserController {
         try{
             userRepo.addNewUser(newUser.getUserid(), newUser.getUsername(), newUser.getPassword());
         } catch (Exception e){
-            e.printStackTrace();
+
         }
         return true;
 
@@ -48,6 +48,7 @@ public class UserController {
             return null;
         }
     }
+
 
     @PostMapping("/getUser")
     public SystemUser getUser(@RequestParam int userid){
@@ -78,5 +79,4 @@ public class UserController {
         Random rand = new Random();
         return rand.nextInt(10000000);
     }
-
 }

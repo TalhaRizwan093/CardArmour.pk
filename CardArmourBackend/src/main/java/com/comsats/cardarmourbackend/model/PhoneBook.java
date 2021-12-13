@@ -6,11 +6,10 @@ import javax.persistence.*;
 @Table(name = "Phone Book", schema = "CARDARMOUR", catalog = "")
 public class PhoneBook {
     private int phonenumberid;
-    private int phonenumber;
+    private String phonenumber;
     private int customerid;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PHONENUMBERID")
     public int getPhonenumberid() {
         return phonenumberid;
@@ -22,11 +21,11 @@ public class PhoneBook {
 
     @Basic
     @Column(name = "PHONENUMBER")
-    public int getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(int phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 
@@ -48,8 +47,9 @@ public class PhoneBook {
         PhoneBook phoneBook = (PhoneBook) o;
 
         if (phonenumberid != phoneBook.phonenumberid) return false;
-        if (phonenumber != phoneBook.phonenumber) return false;
         if (customerid != phoneBook.customerid) return false;
+        if (phonenumber != null ? !phonenumber.equals(phoneBook.phonenumber) : phoneBook.phonenumber != null)
+            return false;
 
         return true;
     }
@@ -57,7 +57,7 @@ public class PhoneBook {
     @Override
     public int hashCode() {
         int result = phonenumberid;
-        result = 31 * result + phonenumber;
+        result = 31 * result + (phonenumber != null ? phonenumber.hashCode() : 0);
         result = 31 * result + customerid;
         return result;
     }

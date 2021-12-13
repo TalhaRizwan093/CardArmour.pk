@@ -23,4 +23,5 @@ public interface UserRepository extends JpaRepository<SystemUser, Integer> {
     @Query(value="UPDATE \"CARDARMOUR\".\"System User\" SET USERNAME = ?1, PASSWORD = ?2 where userid=?3",nativeQuery = true)
     void updateUser(String username,String password,int userid);
 
+
 }

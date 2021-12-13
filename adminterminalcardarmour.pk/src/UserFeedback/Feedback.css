@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.nameFeedback {
+  margin-left: 40%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.feedback {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}

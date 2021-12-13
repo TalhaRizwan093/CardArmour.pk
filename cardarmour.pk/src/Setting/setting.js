@@ -159,6 +159,8 @@ const Setting = () => {
     e.preventDefault();
     console.log("settingCheck",settingCheck)
     let language, timeformat, lightDarkMode;
+    console.log("check ",settingCheck)
+    let cityid;
     if(settingCheck === true){
       if (gender_i.name === undefined || gender_i.name === null) {
         gender = gender_i;
@@ -166,7 +168,13 @@ const Setting = () => {
       else {
         gender = gender_i.name;
       }
-      const cityid = city_i.cityid
+      if (cityid.name === undefined || cityid.name === null) {
+        cityid = city_i;
+      }
+      else {
+        cityid = city_i.cityid;
+      }
+      
 
     const data = { name, gender, cnic, dob, age, phonenumber, email, cityid, userid }
     const userdata = { username, password, userid }
@@ -178,6 +186,7 @@ const Setting = () => {
     updateCustomer(data).then((response) => {
       updateUser(userdata).then((response) => {
         setSetting(settingData).then((response) => {
+          console.log("add setting",settingData)
         })
         navigate("/homepage")
       })
@@ -208,7 +217,12 @@ const Setting = () => {
       else {
         lightDarkMode = selectedMode.language;
       }
-      const cityid = city_i.cityid
+      if (cityid.name === undefined || cityid.name === null) {
+        cityid = city_i;
+      }
+      else {
+        cityid = city_i.cityid;
+      }
   
       const data = { name, gender, cnic, dob, age, phonenumber, email, cityid, userid }
       const userdata = { username, password, userid }

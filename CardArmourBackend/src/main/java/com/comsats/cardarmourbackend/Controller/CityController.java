@@ -15,9 +15,14 @@ public class CityController {
     @Autowired
     private CityRepository cityRepo;
 
-    @PostMapping("/getCities")
-    public List<City> getCities(@RequestParam int countryid){
-        return cityRepo.getCities(countryid);
+
+    @GetMapping("/getAllCities")
+    public List<City> getAllCities(){
+        try{
+            return cityRepo.getAllCities();
+        } catch(Exception e){
+            return null;
+        }
     }
 
     @PostMapping("/getCityByCustomer")
@@ -27,6 +32,11 @@ public class CityController {
         } catch(Exception e){
             return  null;
         }
+    }
+
+    @PostMapping("/getCities")
+    public List<City> getCities(@RequestParam int countryid){
+        return cityRepo.getCities(countryid);
     }
 
 }

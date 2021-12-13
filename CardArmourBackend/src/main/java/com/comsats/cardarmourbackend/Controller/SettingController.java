@@ -6,6 +6,9 @@ import com.comsats.cardarmourbackend.model.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
+import java.util.Set;
+
 @CrossOrigin("*")
 @RestController
 public class SettingController {
@@ -13,12 +16,12 @@ public class SettingController {
     @Autowired
     private SettingRepository settingRepository;
 
-    @PostMapping("/getSetting")
-    public Setting getSetting(@RequestParam int userid){
+    @PostMapping("/addSetting")
+    public void addSetting(@RequestBody Setting setting){
         try{
-            return settingRepository.getSettingById(userid);
-        } catch (Exception e){
-            return null;
+            setting.setSettingid(generateId());
+            settingRepository.addSetting(setting.getSettingid(),setting.getLanguage(),setting.getTimeformat(),setting.getLightDarkMode(),setting.getUserid());
+        } catch(Exception e){
         }
     }
 
@@ -31,12 +34,18 @@ public class SettingController {
         }
     }
 
-    @PostMapping("/addSetting")
-    public void addSetting(@RequestBody Setting setting){
+    @PostMapping("/getSetting")
+    public Setting getSetting(@RequestParam int userid){
         try{
-            settingRepository.addSetting(setting.getSettingid(),setting.getLanguage(),setting.getTimeformat(),setting.getLightDarkMode(),setting.getUserid());
-        } catch(Exception e){
+            return settingRepository.getSettingById(userid);
+        } catch (Exception e){
+            return null;
         }
+    }
+
+    private int generateId(){
+        Random rand = new Random();
+        return rand.nextInt(10000000);
     }
 
 }

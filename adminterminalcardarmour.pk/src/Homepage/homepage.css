@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.nameCard1 {
+  margin-left: 25%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+.name1 {
+  margin-left: 20%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+}
+
+.debitcard {
+  margin-right: 8%;
+  margin-left: 10%;
+  border-radius: 6%;
+  background-image: url(background.jpg);
+}
+
+.cardname {
+  font-family: "Poppins", sans-serif;
+  font-size: large;
+}
+
+.cardnumber {
+  font-family: "Poppins", sans-serif;
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+
+.cardexp {
+  font-family: "Poppins", sans-serif;
+  margin-left: 5.7%;
+}
+
+.cardholdername {
+  font-family: "Poppins", sans-serif;
+  margin-left: 12.2%;
+}
+
+.yourvc {
+  font-family: "Poppins", sans-serif;
+  font-size: large;
+  margin-left: 38%;
+  margin-top: 10%;
+  color: white;
+}
+
+.text {
+  font-family: "Poppins", sans-serif;
+  font-size: large;
+  margin-top: 5%;
+  margin-left: 15%;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.customers {
+  font-family: #2183b7;
+  border-collapse: collapse;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.datatable {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-top: 4%;
+}
+
+.customers td,
+.customers th {
+  font-family: "Poppins", sans-serif;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.customers tr:hover {
+  background-color: #ddd;
+}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  /* background-color: #2183b7; */
+  /* color: white; */
+}
+
+.text1 {
+  font-family: "Poppins", sans-serif;
+  font-size: small;
+  margin-top: 1%;
+  margin-left: 3.5%;
+}
+
+.text2 {
+  font-family: "Poppins", sans-serif;
+  font-size: x-large;
+  margin-top: 1%;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.text3 {
+  font-family: "Poppins", sans-serif;
+  color: white;
+}

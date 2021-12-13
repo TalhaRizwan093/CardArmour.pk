@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+.nameCard {
+  margin-left: 38%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+.ch {
+  margin-left: 45%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.customers {
+  font-family: #2183b7;
+  border-collapse: collapse;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
