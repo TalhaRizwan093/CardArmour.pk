@@ -43,6 +43,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value="SELECT * FROM ChineseCustomers ",nativeQuery = true)
     List<CustomerViewDto> getChineseCustomers();
 
-
-
 }

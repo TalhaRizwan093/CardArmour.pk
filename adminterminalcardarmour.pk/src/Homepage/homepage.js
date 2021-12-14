@@ -23,7 +23,7 @@ import {
   getIndianCustomers,
   getPakistaniCustomers,
   getBangladeshiCustomers,
-  getChineseCustomers
+  getChineseCustomers,
 } from "../api/authenticationService";
 
 const Homepage = ({ loading, error, ...props }) => {
@@ -54,8 +54,8 @@ const Homepage = ({ loading, error, ...props }) => {
   const genders = [{ name: "Male" }, { name: "Female" }];
 
   const dialogFuncMap = {
-    'displayBasic': setDisplayBasic,
-  }
+    displayBasic: setDisplayBasic,
+  };
   const onClick = (name, position) => {
     console.log(accountid1);
     dialogFuncMap[`${name}`](true);
@@ -63,12 +63,10 @@ const Homepage = ({ loading, error, ...props }) => {
     if (position) {
       setPosition(position);
     }
-  }
+  };
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
-  }
-  
-
+  };
 
   const CheckCity = (v) => {
     citiesLov.forEach((element) => {
@@ -77,9 +75,8 @@ const Homepage = ({ loading, error, ...props }) => {
         countryid = element.countryid;
         v = element.name;
         countriesLov.forEach((element) => {
-          if (countryid === element.countryid)
-            v = v + ", " + element.name;
-        })
+          if (countryid === element.countryid) v = v + ", " + element.name;
+        });
       }
     });
     return v;
@@ -100,7 +97,7 @@ const Homepage = ({ loading, error, ...props }) => {
     const username_ = getToken();
     getUser(id).then((response) => {
       setUsername(response.data.username);
-    })
+    });
     if (username_ === "undefined" || username_ === null) {
       navigate("/");
     }
@@ -108,36 +105,33 @@ const Homepage = ({ loading, error, ...props }) => {
     getCustomerId(id).then((response) => {
       userid = response.data;
       localStorage.setItem("C_ID", response.data);
-
     });
 
     getAdminID(id).then((response) => {
-      setAdminid(response.data)
-    })
-
+      setAdminid(response.data);
+    });
 
     getAllCustomers().then((response) => {
-      const customerList = response.data
-      let data = customerList
+      const customerList = response.data;
+      let data = customerList;
       setCustomers(data);
-    })
+    });
     getAllCities().then((response) => {
-      setCitiesLov(response.data)
-    })
+      setCitiesLov(response.data);
+    });
     countriesAPI().then((response) => {
-      setCountriesLov(response.data)
-    })
+      setCountriesLov(response.data);
+    });
     getAllFeedback().then((response) => {
       console.log("feedbacks", response);
-      setFeedbacks(response.data)
-    })
+      setFeedbacks(response.data);
+    });
 
     countriesAPI().then((response) => {
-      console.log(response)
-      const country = response.data
-      setCountryBy(country)
-    })
-
+      console.log(response);
+      const country = response.data;
+      setCountryBy(country);
+    });
   }, []);
 
   const handleLogout = (e) => {
@@ -145,7 +139,6 @@ const Homepage = ({ loading, error, ...props }) => {
     localStorage.clear();
     navigate("/");
   };
-
 
   const handleFlaggedAccount = (e) => {
     e.preventDefault();
@@ -158,21 +151,21 @@ const Homepage = ({ loading, error, ...props }) => {
 
   const handleFlag = (e) => {
     e.preventDefault();
-    const customerCustomerid = customerid
-    const adminAdminid = adminid
-    const data = { customerCustomerid, reason, adminAdminid }
-    console.log(data)
+    const customerCustomerid = customerid;
+    const adminAdminid = adminid;
+    const data = { customerCustomerid, reason, adminAdminid };
+    console.log(data);
     addToFlaggedUser(data).then((response) => {
       window.location.reload(true);
-    })
-  }
+    });
+  };
 
   const dob = (v) => {
     let dob = "";
     for (let index = 0; index < v.length; index++) {
-      dob = dob + v[index]
-      if (v[index + 1] === 'T') {
-        break
+      dob = dob + v[index];
+      if (v[index + 1] === "T") {
+        break;
       }
     }
     return dob;
@@ -180,46 +173,45 @@ const Homepage = ({ loading, error, ...props }) => {
 
   const handleCountryChange = (e) => {
     e.preventDefault();
-    console.log(country)
-    if(country.name === "Pakistan"){
+    console.log(country);
+    if (country.name === "Pakistan") {
       getPakistaniCustomers().then((response) => {
         setCustomers(response.data);
-        console.log(response)
-      })
-    }
-    else if(country.name === "India"){
+        console.log(response);
+      });
+    } else if (country.name === "India") {
       getIndianCustomers().then((response) => {
         setCustomers(response.data);
-        console.log(response)
-      })
-
-    }
-    else if(country.name === "Bangladesh"){
+        console.log(response);
+      });
+    } else if (country.name === "Bangladesh") {
       getBangladeshiCustomers().then((response) => {
         setCustomers(response.data);
-        console.log(response)
-      })
-    }
-    else if(country.name === "China"){
+        console.log(response);
+      });
+    } else if (country.name === "China") {
       getChineseCustomers().then((response) => {
         setCustomers(response.data);
-        console.log(response)
-      })
+        console.log(response);
+      });
+    } else {
+      alert("Select valid country");
     }
-    else{
-      alert("Select valid country")
-    }
-
-  }
+  };
 
   const renderFooter = (name) => {
     return (
       <div>
-        <Button label="No" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" />
+        <Button
+          label="No"
+          icon="pi pi-times"
+          onClick={() => onHide(name)}
+          className="p-button-text"
+        />
         <Button label="Yes" icon="pi pi-check" onClick={handleFlag} autoFocus />
       </div>
     );
-  }
+  };
 
   return (
     <div
@@ -283,98 +275,95 @@ const Homepage = ({ loading, error, ...props }) => {
           </Row>
 
           <Row>
+            <div style={{ marginLeft: "5%" }}>
+              <label htmlFor="gender">
+                <h5 style={{ color: "white" }}>Filter By Country : </h5>
+              </label>
+              <br></br>
+              <Dropdown
+                inputId="gender"
+                value={country}
+                options={countryBy}
+                onChange={onCountryChange}
+                placeholder="Select"
+                optionLabel="name"
+                style={{ marginLeft: "1.4%" }}
+              />
+              <Button
+                onClick={handleCountryChange}
+                label="Go"
+                className="p-button-raised p-button-success"
+                style={{
+                  marginLeft: "1%",
+                }}
+              />
+            </div>
             <Col md={8}>
               <div style={{ marginLeft: "1%" }}>
                 <h4
                   style={{
                     textAlign: "center",
-                    marginTop: "5%",
                     color: "white",
                   }}
                 >
                   Customers
                 </h4>
-                <div className="p-field p-col-12 p-md-3">
-                  <label
-                    htmlFor="gender"
-                    style={{ marginLeft: "30%", marginTop: "13.5%" }}
-                  >
-                    Filtter Country By
-                  </label>
-                  <Dropdown
-                    inputId="gender"
-                    value={country}
-                    options={countryBy}
-                    onChange={onCountryChange}
-                    placeholder="Select"
-                    optionLabel="name"
-                  />
-                  <Button
-                    onClick={handleCountryChange}
-                    label="Go"
-                    className="p-button-rounded p-button-outlined"
-                    style={{
-                      color: "green",
-                      marginLeft: "10%",
-                      marginBottom: "5%",
-                    }}
-                  />
-                </div>
-                <table className="customers"
+              </div>
+              <table
+                className="customers"
+                style={{
+                  marginTop: "2%",
+                }}
+              >
+                <tr
                   style={{
-                    "marginTop": "2%"
-
+                    alignItems: "center",
+                    margintop: "0%",
                   }}
                 >
-                  <tr
-                    style={{
-                      alignItems: "center",
-                      margintop: "0%"
-                    }}
-                  >
-                    <th style={{ textAlign: "center" }}>Name</th>
-                    <th style={{ textAlign: "center" }}>Gender</th>
-                    <th style={{ textAlign: "center" }}>Cnic</th>
-                    <th style={{ textAlign: "center" }}>DOB</th>
-                    <th style={{ textAlign: "center" }}>Age</th>
-                    <th style={{ textAlign: "center" }}>Email</th>
-                    <th style={{ textAlign: "center" }}>Location</th>
-                    <th style={{ textAlign: "center" }}>Options</th>
-                  </tr>
-                  <tbody>
-                    {customers.map((customer) => (
-                      <tr>
-                        <td>{customer.name}</td>
-                        <td>{customer.gender}</td>
-                        <td>{customer.cnic}</td>
-                        <td>{dob(customer.dob)}</td>
-                        <td>{customer.age}</td>
-                        <td>{customer.email}</td>
-                        <td>{CheckCity(customer.cityid)}</td>
-                        <td>              <Button
+                  <th style={{ textAlign: "center" }}>Name</th>
+                  <th style={{ textAlign: "center" }}>Gender</th>
+                  <th style={{ textAlign: "center" }}>Cnic</th>
+                  <th style={{ textAlign: "center" }}>DOB</th>
+                  <th style={{ textAlign: "center" }}>Age</th>
+                  <th style={{ textAlign: "center" }}>Email</th>
+                  <th style={{ textAlign: "center" }}>Location</th>
+                  <th style={{ textAlign: "center" }}>Options</th>
+                </tr>
+                <tbody>
+                  {customers.map((customer) => (
+                    <tr>
+                      <td>{customer.name}</td>
+                      <td>{customer.gender}</td>
+                      <td>{customer.cnic}</td>
+                      <td>{dob(customer.dob)}</td>
+                      <td>{customer.age}</td>
+                      <td>{customer.email}</td>
+                      <td>{CheckCity(customer.cityid)}</td>
+                      <td>
+                        {" "}
+                        <Button
                           onClick={() => {
-                            setCustomerid(customer.customerid)
-                            console.log(customer.customerid)
-                            onClick('displayBasic')
+                            setCustomerid(customer.customerid);
+                            console.log(customer.customerid);
+                            onClick("displayBasic");
                           }}
                           label="Flag Customer"
                           className="p-button-outlined p-button-warning"
                           style={{ color: "red" }}
                         />
-                        </td>
-                      </tr>
-                    ))}
-
-                  </tbody>
-                </table>
-              </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </Col>
             <Col md={4}>
-              <div style={{ marginTop: "10%", marginRight: "1%" }}>
+              <div style={{ marginTop: "2.7%", marginRight: "1%" }}>
                 <h4
                   style={{
                     textAlign: "center",
-                    marginTop: "5%",
+
                     color: "white",
                   }}
                 >
@@ -392,20 +381,27 @@ const Homepage = ({ loading, error, ...props }) => {
                   <tbody>
                     {feedbacks.map((feedback) => (
                       <tr>
-
                         <td>{feedback.detail}</td>
-                        <td>{<Button
-                          onClick={() => {
-                            localStorage.setItem('FEEDBACK_ID', feedback.feedbackid);
-                            localStorage.setItem('FEEDBACK_CUSTOMER_ID', feedback.customerid);
-                            navigate("/feedback")
-                          }}
-                          label="Reply"
-                          className="p-button-outlined p-button-warning"
-                          style={{ color: "red" }}
-                        />
-                        }</td>
-
+                        <td>
+                          {
+                            <Button
+                              onClick={() => {
+                                localStorage.setItem(
+                                  "FEEDBACK_ID",
+                                  feedback.feedbackid
+                                );
+                                localStorage.setItem(
+                                  "FEEDBACK_CUSTOMER_ID",
+                                  feedback.customerid
+                                );
+                                navigate("/feedback");
+                              }}
+                              label="Reply"
+                              className="p-button-outlined p-button-warning"
+                              style={{ color: "red" }}
+                            />
+                          }
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -415,7 +411,13 @@ const Homepage = ({ loading, error, ...props }) => {
           </Row>
         </div>
       )}
-      <Dialog header="Enter Reason" visible={displayBasic} style={{ width: '50vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+      <Dialog
+        header="Enter Reason"
+        visible={displayBasic}
+        style={{ width: "50vw" }}
+        footer={renderFooter("displayBasic")}
+        onHide={() => onHide("displayBasic")}
+      >
         <InputText
           id="username"
           value={reason}
