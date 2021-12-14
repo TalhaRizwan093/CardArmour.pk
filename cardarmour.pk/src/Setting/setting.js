@@ -7,7 +7,7 @@ import { InputText } from "primereact/inputtext";
 import React, { useState } from "react";
 import { Password } from "primereact/password";
 import { useNavigate } from "react-router-dom";
-import { setSetting, updateSetting, getSettings, getUser, getCustomer, updateCustomer, getPhonenumber, countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer, updateUser } from "../api/authenticationService"
+import { setSetting, updateSetting, getSettings, getUser, getCustomer, updateCustomer, getPhonenumber, countriesAPI, citiesAPI, getCityByCustomer, getCountryByCustomer, updateUser, deleteUser } from "../api/authenticationService"
 
 const Setting = () => {
   const [selectedLanguage, setLanguage] = useState(null);
@@ -168,7 +168,8 @@ const Setting = () => {
       else {
         gender = gender_i.name;
       }
-      if (cityid.name === undefined || cityid.name === null) {
+      console.log("cityabc",city_i)
+      if (city_i === undefined || city_i === null) {
         cityid = city_i;
       }
       else {
@@ -259,6 +260,15 @@ const Setting = () => {
     setCity(e.value)
 
   }
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    userid = getUserId();
+    deleteUser(userid).then((response) => {
+      navigate('/')
+    })
+  }
+  
 
 
   return (
@@ -485,6 +495,12 @@ const Setting = () => {
                     optionLabel="name"
                   />
                 </div>
+                <Button
+                  onClick={handleDelete}
+                  label="DELETE ACCOUNT"
+                  className="p-button-raised p-button-danger"
+                  style={{ marginTop: "1%", marginBottom: "1.5%" }}
+                />
               </div>
               <Button
                 onClick={handleConfirm}
@@ -502,12 +518,7 @@ const Setting = () => {
                 className="p-button-raised p-button-danger"
                 style={{ marginLeft: "6%", marginBottom: "5%" }}
               />
-              <Button
-                  onClick={handleDelete}
-                  label="DELETE ACCOUNT"
-                  className="p-button-raised p-button-danger"
-                  style={{ marginTop: "1%", marginBottom: "1.5%" }}
-                />
+
             </div>
           </Col>
           <Col md={2}></Col>

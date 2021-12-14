@@ -275,6 +275,30 @@ export const getUseridByCustomerid = async (customerid) => {
   });
 };
 
+export const getIndianCustomers = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getIndianCustomers", 
+  });
+};
+export const getPakistaniCustomers = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getPakistaniCustomers", 
+  });
+};
+export const getBangladeshiCustomers = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getBangladeshiCustomers", 
+  });
+};
+export const getChineseCustomers = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getChineseCustomers", 
+  });
+};
 
 
 

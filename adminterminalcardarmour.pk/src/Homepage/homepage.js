@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
+import { Dropdown } from "primereact/dropdown";
 import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -18,7 +19,11 @@ import {
   addToFlaggedUser,
   getAdminID,
   getAllFeedback,
-  getReply
+  getReply,
+  getIndianCustomers,
+  getPakistaniCustomers,
+  getBangladeshiCustomers,
+  getChineseCustomers
 } from "../api/authenticationService";
 
 const Homepage = ({ loading, error, ...props }) => {
@@ -42,7 +47,11 @@ const Homepage = ({ loading, error, ...props }) => {
   const [countriesLov, setCountriesLov] = useState([]);
   const [customerid, setCustomerid] = useState([]);
   const [adminid, setAdminid] = useState([]);
+  const [countryBy, setCountryBy] = useState([]);
+  const [country, setCountry] = useState(null);
   const [feedbacks, setFeedbacks] = useState([]);
+
+  const genders = [{ name: "Male" }, { name: "Female" }];
 
   const dialogFuncMap = {
     'displayBasic': setDisplayBasic,
@@ -58,6 +67,8 @@ const Homepage = ({ loading, error, ...props }) => {
   const onHide = (name) => {
     dialogFuncMap[`${name}`](false);
   }
+  
+
 
   const CheckCity = (v) => {
     citiesLov.forEach((element) => {
@@ -120,6 +131,13 @@ const Homepage = ({ loading, error, ...props }) => {
       console.log("feedbacks", response);
       setFeedbacks(response.data)
     })
+
+    countriesAPI().then((response) => {
+      console.log(response)
+      const country = response.data
+      setCountryBy(country)
+    })
+
   }, []);
 
   const handleLogout = (e) => {
@@ -134,6 +152,9 @@ const Homepage = ({ loading, error, ...props }) => {
     navigate("/flaggedaccount");
   };
 
+  const onCountryChange = (e) => {
+    setCountry(e.value);
+  };
 
   const handleFlag = (e) => {
     e.preventDefault();
@@ -144,6 +165,51 @@ const Homepage = ({ loading, error, ...props }) => {
     addToFlaggedUser(data).then((response) => {
       window.location.reload(true);
     })
+  }
+
+  const dob = (v) => {
+    let dob = "";
+    for (let index = 0; index < v.length; index++) {
+      dob = dob + v[index]
+      if (v[index + 1] === 'T') {
+        break
+      }
+    }
+    return dob;
+  };
+
+  const handleCountryChange = (e) => {
+    e.preventDefault();
+    console.log(country)
+    if(country.name === "Pakistan"){
+      getPakistaniCustomers().then((response) => {
+        setCustomers(response.data);
+        console.log(response)
+      })
+    }
+    else if(country.name === "India"){
+      getIndianCustomers().then((response) => {
+        setCustomers(response.data);
+        console.log(response)
+      })
+
+    }
+    else if(country.name === "Bangladesh"){
+      getBangladeshiCustomers().then((response) => {
+        setCustomers(response.data);
+        console.log(response)
+      })
+    }
+    else if(country.name === "China"){
+      getChineseCustomers().then((response) => {
+        setCustomers(response.data);
+        console.log(response)
+      })
+    }
+    else{
+      alert("Select valid country")
+    }
+
   }
 
   const renderFooter = (name) => {
@@ -228,10 +294,42 @@ const Homepage = ({ loading, error, ...props }) => {
                 >
                   Customers
                 </h4>
-                <table className="customers">
+                <div className="p-field p-col-12 p-md-3">
+                  <label
+                    htmlFor="gender"
+                    style={{ marginLeft: "30%", marginTop: "13.5%" }}
+                  >
+                    Filtter Country By
+                  </label>
+                  <Dropdown
+                    inputId="gender"
+                    value={country}
+                    options={countryBy}
+                    onChange={onCountryChange}
+                    placeholder="Select"
+                    optionLabel="name"
+                  />
+                  <Button
+                    onClick={handleCountryChange}
+                    label="Go"
+                    className="p-button-rounded p-button-outlined"
+                    style={{
+                      color: "green",
+                      marginLeft: "10%",
+                      marginBottom: "5%",
+                    }}
+                  />
+                </div>
+                <table className="customers"
+                  style={{
+                    "marginTop": "2%"
+
+                  }}
+                >
                   <tr
                     style={{
                       alignItems: "center",
+                      margintop: "0%"
                     }}
                   >
                     <th style={{ textAlign: "center" }}>Name</th>
@@ -249,7 +347,7 @@ const Homepage = ({ loading, error, ...props }) => {
                         <td>{customer.name}</td>
                         <td>{customer.gender}</td>
                         <td>{customer.cnic}</td>
-                        <td>{customer.dob}</td>
+                        <td>{dob(customer.dob)}</td>
                         <td>{customer.age}</td>
                         <td>{customer.email}</td>
                         <td>{CheckCity(customer.cityid)}</td>
@@ -294,12 +392,12 @@ const Homepage = ({ loading, error, ...props }) => {
                   <tbody>
                     {feedbacks.map((feedback) => (
                       <tr>
-                        
+
                         <td>{feedback.detail}</td>
-                        <td>{ <Button
+                        <td>{<Button
                           onClick={() => {
-                            localStorage.setItem('FEEDBACK_ID',feedback.feedbackid);
-                            localStorage.setItem('FEEDBACK_CUSTOMER_ID',feedback.customerid);
+                            localStorage.setItem('FEEDBACK_ID', feedback.feedbackid);
+                            localStorage.setItem('FEEDBACK_CUSTOMER_ID', feedback.customerid);
                             navigate("/feedback")
                           }}
                           label="Reply"
@@ -307,7 +405,7 @@ const Homepage = ({ loading, error, ...props }) => {
                           style={{ color: "red" }}
                         />
                         }</td>
-                        
+
                       </tr>
                     ))}
                   </tbody>

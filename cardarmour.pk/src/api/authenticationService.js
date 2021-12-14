@@ -271,6 +271,15 @@ export const getAllReply = async () => {
   });
 };
 
+export const deleteUser = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/deleteUser", 
+    params: {userid}
+  });
+};
+
+
 
 
 
