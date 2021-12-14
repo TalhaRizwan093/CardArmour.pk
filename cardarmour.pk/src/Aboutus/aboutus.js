@@ -6,25 +6,24 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 
 const Aboutus = () => {
-
   const navigate = useNavigate();
-  
-  const getToken=()=>{
-    return localStorage.getItem('USER_KEY');
-  }
+
+  const getToken = () => {
+    return localStorage.getItem("USER_KEY");
+  };
   let username = getToken();
-  
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     username = getToken();
-    if( username === "undefined" ||  username === null){
-      navigate('/');
+    if (username === "undefined" || username === null) {
+      navigate("/");
     }
-  },[])
+  }, []);
 
   const handleReturnHome = (e) => {
     e.preventDefault();
-    navigate('/homepage');
-  }
+    navigate("/homepage");
+  };
 
   return (
     <div
@@ -65,11 +64,11 @@ const Aboutus = () => {
           </h4>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={4}>
             <Card className="card1">
               <img
                 src="./talha.jpeg"
-                style={{ height: "250px", marginLeft: "25%" }}
+                style={{ height: "250px", marginLeft: "15%" }}
               />
               <p className="text">
                 Talha Rizwan CO-FOUNDER CardArmour.pk is an Software Engineering
@@ -78,23 +77,35 @@ const Aboutus = () => {
               </p>
             </Card>
           </Col>
-          <Col md={6}>
+          <Col md={4}>
             <Card className="card2">
               <img
                 src="./shehroze.jpeg"
-                style={{ height: "250px", marginLeft: "30%" }}
+                style={{ height: "250px", marginLeft: "20%" }}
               />
-              <p className="text">
+              <p className="text" style={{ marginBottom: "15%" }}>
                 Shehroze Ehsan CO-FOUNDER CardArmour.pk is an Software
                 Engineering student at COMSATS Islamabad. He is an ambitious
                 student and a fast learner.
               </p>
             </Card>
           </Col>
+          <Col md={4}>
+            <Card className="card3">
+              <img
+                src="./rana.jpeg"
+                style={{ height: "250px", marginLeft: "20%" }}
+              />
+              <p className="text" style={{ marginBottom: "34%" }}>
+                Rana Ali Uzair CO-FOUNDER CardArmour.pk believes in adding value
+                to the world with his experties and skills.
+              </p>
+            </Card>
+          </Col>
         </Row>
         <Row>
-          <Col md={3}></Col>
-          <Col md={6}>
+          <Col md={2}></Col>
+          <Col md={8}>
             <Card className="para">
               <p className="paratext">
                 CardArmour.pk strives to provide security when dealing with

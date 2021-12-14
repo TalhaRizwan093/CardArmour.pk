@@ -16,7 +16,9 @@ import {
   getAllCities,
   countriesAPI,
   addToFlaggedUser,
-  getAdminID
+  getAdminID,
+  getAllFeedback,
+  getReply
 } from "../api/authenticationService";
 
 const Homepage = ({ loading, error, ...props }) => {
@@ -40,6 +42,7 @@ const Homepage = ({ loading, error, ...props }) => {
   const [countriesLov, setCountriesLov] = useState([]);
   const [customerid, setCustomerid] = useState([]);
   const [adminid, setAdminid] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
   const dialogFuncMap = {
     'displayBasic': setDisplayBasic,
@@ -113,6 +116,10 @@ const Homepage = ({ loading, error, ...props }) => {
     countriesAPI().then((response) => {
       setCountriesLov(response.data)
     })
+    getAllFeedback().then((response) => {
+      console.log("feedbacks", response);
+      setFeedbacks(response.data)
+    })
   }, []);
 
   const handleLogout = (e) => {
@@ -132,7 +139,7 @@ const Homepage = ({ loading, error, ...props }) => {
     e.preventDefault();
     const customerCustomerid = customerid
     const adminAdminid = adminid
-    const data = {customerCustomerid,reason,adminAdminid}
+    const data = { customerCustomerid, reason, adminAdminid }
     console.log(data)
     addToFlaggedUser(data).then((response) => {
       window.location.reload(true);
@@ -247,23 +254,16 @@ const Homepage = ({ loading, error, ...props }) => {
                         <td>{customer.email}</td>
                         <td>{CheckCity(customer.cityid)}</td>
                         <td>              <Button
-                          onClick={() => {setCustomerid(customer.customerid)
-                                          console.log(customer.customerid)   
-                                          onClick('displayBasic')             
+                          onClick={() => {
+                            setCustomerid(customer.customerid)
+                            console.log(customer.customerid)
+                            onClick('displayBasic')
                           }}
                           label="Flag Customer"
                           className="p-button-outlined p-button-warning"
                           style={{ color: "red" }}
                         />
-                          <Dialog header="Enter Reason" visible={displayBasic} style={{ width: '50vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
-                            <InputText
-                              id="username"
-                              value={reason}
-                              onChange={(e) => setReason(e.target.value)}
-                              style={{ width: "222px" }}
-                            />
-                          </Dialog>
-                          </td>
+                        </td>
                       </tr>
                     ))}
 
@@ -292,9 +292,22 @@ const Homepage = ({ loading, error, ...props }) => {
                     <th style={{ textAlign: "center" }}>Options</th>
                   </tr>
                   <tbody>
-                    {cities.map((city) => (
+                    {feedbacks.map((feedback) => (
                       <tr>
-                        <td>{city.name}</td>
+                        
+                        <td>{feedback.detail}</td>
+                        <td>{ <Button
+                          onClick={() => {
+                            localStorage.setItem('FEEDBACK_ID',feedback.feedbackid);
+                            localStorage.setItem('FEEDBACK_CUSTOMER_ID',feedback.customerid);
+                            navigate("/feedback")
+                          }}
+                          label="Reply"
+                          className="p-button-outlined p-button-warning"
+                          style={{ color: "red" }}
+                        />
+                        }</td>
+                        
                       </tr>
                     ))}
                   </tbody>
@@ -304,6 +317,14 @@ const Homepage = ({ loading, error, ...props }) => {
           </Row>
         </div>
       )}
+      <Dialog header="Enter Reason" visible={displayBasic} style={{ width: '50vw' }} footer={renderFooter('displayBasic')} onHide={() => onHide('displayBasic')}>
+        <InputText
+          id="username"
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          style={{ width: "222px" }}
+        />
+      </Dialog>
     </div>
   );
 };

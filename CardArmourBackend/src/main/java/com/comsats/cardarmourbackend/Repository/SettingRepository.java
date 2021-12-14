@@ -15,5 +15,4 @@ public interface SettingRepository extends JpaRepository<Setting,Integer> {
     @Query(value="UPDATE \"CARDARMOUR\".\"SETTING\" SET LANGUAGE = ?1, TIMEFORMAT = ?2, \"light/dark_mode\" = ?3 where userid = ?4",nativeQuery = true)
     void updateSetting(String language,String timeformat,String mode, int userid);
 
-
 }

@@ -219,3 +219,64 @@ export const getAdminID = async (userid) => {
     params: {userid}
   });
 };
+
+export const getAllFlaggedCustomers = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getAllFlaggedCustomers", 
+  });
+};
+
+export const getAllFeedback = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getAllFeedback", 
+  });
+};
+
+export const getFeedbackByFeedbackId = async (feedbackid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getFeedbackByFeedbackId", 
+    params: {feedbackid}
+  });
+};
+
+export const addReply = async (data) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/addReply",
+    data: data,
+  });
+};
+
+export const getReply = async (feedbackid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getReply", 
+    params: {feedbackid}
+  });
+};
+
+export const deleteUser = async (userid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/deleteUser", 
+    params: {userid}
+  });
+};
+
+
+export const getUseridByCustomerid = async (customerid) => {
+  return await axios({
+    method: "POST",
+    url: "http://localhost:8080/getUseridByCustomerid", 
+    params: {customerid}
+  });
+};
+
+
+
+
+
+

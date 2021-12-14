@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 public interface CustomerBankAccountRepository extends JpaRepository<CustomerBankAccount,Integer> {
 
     @Query(value="INSERT INTO \"CARDARMOUR\".\"Customer Bank Account\" (CBA_ID, CUSTOMERID, ACCOUNTID) VALUES (?1,?2,?3)",nativeQuery = true)
-    boolean linkCustomerToAccount(int cbaid,int customerid,int accountid);
+    void linkCustomerToAccount(int cbaid,int customerid,int accountid);
 
     @Query(value="DELETE FROM \"Customer Bank Account\" WHERE ACCOUNTID = ?1",nativeQuery = true)
-    boolean deleteLink(int cutomerid);
+    void deleteLink(int cutomerid);
 
 
 }

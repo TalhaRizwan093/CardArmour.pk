@@ -12,7 +12,7 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     List<City> getAllCities();
 
     @Query(value="Select * from city where countryid = ?1",nativeQuery = true )
-    List<City> getCities(int countryid);
+    List<City> getCityByCountryid(int countryid);
 
     @Query(value="Select city.cityid,city.name,city.countryid from city JOIN customer on customer.cityid = city.cityid where customerid = ?1",nativeQuery = true)
     City getCityByCustomerid(int customerid);

@@ -22507,3 +22507,2073 @@ create sequence hibernate_sequence start with 1 increment by  1;
         virtualcardid number(10,0),
         primary key (transactionid)
     );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );
+
+    create table cardarmour.bank account (
+       accountid number(10,0) not null,
+        bankname varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cardnumber varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (accountid)
+    );
+
+    create table cardarmour.card link (
+       linkid number(10,0) not null,
+        bankaccountid number(10,0),
+        linkstatus number(10,0),
+        virtualcardid number(10,0),
+        primary key (linkid)
+    );
+
+    create table cardarmour.customer bank account (
+       cba_id number(10,0) not null,
+        accountid number(10,0),
+        customerid number(10,0),
+        primary key (cba_id)
+    );
+
+    create table cardarmour.feedback response (
+       responseid number(10,0) not null,
+        adminid number(10,0),
+        comment varchar2(255 char),
+        date date,
+        feedbackid number(10,0),
+        primary key (responseid)
+    );
+
+    create table cardarmour.flagged user (
+       flaggedid number(10,0) not null,
+        admin_adminid number(10,0),
+        customer_customerid number(10,0),
+        reason varchar2(255 char),
+        primary key (flaggedid)
+    );
+
+    create table cardarmour.phone book (
+       phonenumberid number(10,0) not null,
+        customerid number(10,0),
+        phonenumber varchar2(255 char),
+        primary key (phonenumberid)
+    );
+
+    create table cardarmour.system user (
+       userid number(10,0) not null,
+        password varchar2(255 char),
+        username varchar2(255 char),
+        primary key (userid)
+    );
+
+    create table cardarmour.virtual card (
+       cardid number(10,0) not null,
+        card number varchar2(255 char),
+        cardholdername varchar2(255 char),
+        cvc number(10,0),
+        expdate date,
+        primary key (cardid)
+    );
+create sequence hibernate_sequence start with 1 increment by  1;
+
+    create table admin (
+       adminid number(10,0) not null,
+        cityid number(10,0),
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (adminid)
+    );
+
+    create table city (
+       cityid number(10,0) not null,
+        countryid number(10,0),
+        name varchar2(255 char),
+        primary key (cityid)
+    );
+
+    create table country (
+       countryid number(10,0) not null,
+        name varchar2(255 char),
+        primary key (countryid)
+    );
+
+    create table customer (
+       customerid number(10,0) not null,
+        age number(10,0),
+        cityid number(10,0),
+        cnic varchar2(255 char),
+        dob date,
+        email varchar2(255 char),
+        gender varchar2(255 char),
+        name varchar2(255 char),
+        userid number(10,0),
+        primary key (customerid)
+    );
+
+    create table feedback (
+       feedbackid number(10,0) not null,
+        customerid number(10,0),
+        date date,
+        detail varchar2(255 char),
+        primary key (feedbackid)
+    );
+
+    create table setting (
+       settingid number(10,0) not null,
+        language varchar2(255 char),
+        light/dark_mode varchar2(255 char),
+        timeformat varchar2(255 char),
+        userid number(10,0),
+        primary key (settingid)
+    );
+
+    create table sms (
+       sms_id number(10,0) not null,
+        customerid number(10,0),
+        details varchar2(255 char),
+        time date,
+        transactionid number(10,0),
+        primary key (sms_id)
+    );
+
+    create table transaction (
+       transactionid number(10,0) not null,
+        amount number(10,0),
+        comment varchar2(255 char),
+        date date,
+        status varchar2(255 char),
+        virtualcardid number(10,0),
+        primary key (transactionid)
+    );

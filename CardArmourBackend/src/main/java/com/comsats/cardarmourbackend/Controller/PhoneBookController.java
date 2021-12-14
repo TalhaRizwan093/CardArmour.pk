@@ -1,52 +1,30 @@
 package com.comsats.cardarmourbackend.Controller;
 
-import com.comsats.cardarmourbackend.Repository.PhoneBookRepository;
+import com.comsats.cardarmourbackend.Service.PhoneBookService;
 import com.comsats.cardarmourbackend.model.PhoneBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Random;
 
 @CrossOrigin("*")
 @RestController
 public class PhoneBookController {
 
     @Autowired
-    PhoneBookRepository phoneBookRepository;
+    PhoneBookService phoneBookService;
 
     @PostMapping("/addPhoneNumber")
-    boolean addPhoneNumber(@RequestBody PhoneBook phoneBook){
-        try{
-            phoneBook.setPhonenumberid(generateId());
-            phoneBookRepository.addPhoneNumber(phoneBook.getPhonenumberid(),phoneBook.getPhonenumber(),phoneBook.getCustomerid());
-        }catch(Exception e){
-
-        }
-        return true;
+    public void addPhoneNumber(@RequestBody PhoneBook phoneBook){
+        phoneBookService.addPhoneNumber(phoneBook);
     }
 
     @PostMapping("/updatePhoneNumber")
-    boolean updatePhoneNumber(@RequestBody PhoneBook phoneBook){
-        try{
-            phoneBookRepository.updatePhoneNumber(phoneBook.getPhonenumber(),phoneBook.getCustomerid());
-        } catch(Exception e){
-
-        }
-        return true;
+    public void updatePhoneNumber(@RequestBody PhoneBook phoneBook){
+        phoneBookService.updatePhoneNumber(phoneBook);
     }
 
     @PostMapping("/getPhoneNumber")
-    PhoneBook getPhoneNumber(@RequestParam int customerid){
-        try{
-            return phoneBookRepository.getPhoneNumber(customerid);
-        } catch(Exception e){
-            return null;
-        }
+    public PhoneBook getPhoneNumber(@RequestParam int customerid){
+        return phoneBookService.getPhoneNumber(customerid);
     }
 
-
-    private int generateId(){
-        Random rand = new Random();
-        return rand.nextInt(10000000);
-    }
 }

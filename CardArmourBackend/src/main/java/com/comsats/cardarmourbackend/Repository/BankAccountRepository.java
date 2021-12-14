@@ -15,6 +15,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccount,Integer
     int addPaymentMethod(int accountid, String cardholdername, String bankname, String cardnumber,int cvc , Date expdate);
 
     @Query(value="DELETE FROM \"Bank Account\" WHERE accountid = ?1",nativeQuery = true)
-    boolean deletePaymentMethod(int accountid);
+    void deletePaymentMethod(int accountid);
 
 }

@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.sql.Date;
+import java.util.List;
 
 public interface FeedbackResponseRepository extends JpaRepository<FeedbackResponse,Integer> {
 
@@ -13,5 +14,8 @@ public interface FeedbackResponseRepository extends JpaRepository<FeedbackRespon
 
     @Query(value="SELECT * FROM \"Feedback Response\" where feedbackid = ?1",nativeQuery = true)
     FeedbackResponse getFeedback(int feedbackid);
+
+    @Query(value="SELECT * FROM \"Feedback Response\"",nativeQuery = true)
+    List<FeedbackResponse> getAllReply();
 
 }

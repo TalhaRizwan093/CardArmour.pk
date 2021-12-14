@@ -13,8 +13,12 @@ public interface FeedbackRepository extends JpaRepository<Feedback,Integer> {
     List<Feedback> getFeedbackByCustomerid(int customerid);
 
     @Query(value="INSERT INTO \"CARDARMOUR\".\"FEEDBACK\" (FEEDBACKID, DETAIL, \"date\", CUSTOMERID) VALUES (?1, ?2, ?3, ?4)",nativeQuery = true)
-    boolean addFeedback(int feedbackid, String details, Date date,int customerid);
+    void addFeedback(int feedbackid, String details, Date date,int customerid);
 
+    @Query(value="SELECT * FROM feedback",nativeQuery = true)
+    List<Feedback> getAllFeedback();
 
+    @Query(value="SELECT * FROM feedback WHERE feedbackid = ?1",nativeQuery = true)
+    Feedback getFeedbackByFeedbackId(int feedbackid);
 
 }

@@ -1,6 +1,7 @@
 package com.comsats.cardarmourbackend.Controller;
 
-import com.comsats.cardarmourbackend.Repository.SMSRepository;
+
+import com.comsats.cardarmourbackend.Service.SmsService;
 import com.comsats.cardarmourbackend.model.Sms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,15 +16,10 @@ import java.util.List;
 public class SmsController {
 
     @Autowired
-    private SMSRepository smsRepository;
+    private SmsService smsService;
 
     @PostMapping("/getSmsHistory")
     public List<Sms> getSms(@RequestParam int customerid){
-        try{
-            return smsRepository.getSmsById(customerid);
-        } catch(Exception e){
-            return null;
-        }
+        return smsService.getSms(customerid);
     }
-
 }

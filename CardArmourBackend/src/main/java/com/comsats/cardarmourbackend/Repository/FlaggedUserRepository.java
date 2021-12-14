@@ -1,8 +1,11 @@
 package com.comsats.cardarmourbackend.Repository;
 
+import com.comsats.cardarmourbackend.Dto.FlaggedCustomerDto;
 import com.comsats.cardarmourbackend.model.FlaggedUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface FlaggedUserRepository extends JpaRepository<FlaggedUser,Integer> {
 
@@ -11,5 +14,8 @@ public interface FlaggedUserRepository extends JpaRepository<FlaggedUser,Integer
 
     @Query(value="DELETE FROM \"CARDARMOUR\".\"Flagged User\" where flaggedid = ?1",nativeQuery = true)
     void deleteFlaggedUser(int flaggedid);
+
+    @Query(value="SELECT * FROM \"Flagged User\" join customer on customer.customerid = \"Flagged User\".customer_customerid",nativeQuery = true)
+    List<FlaggedCustomerDto> getAllFlaggedCustomers();
 
 }

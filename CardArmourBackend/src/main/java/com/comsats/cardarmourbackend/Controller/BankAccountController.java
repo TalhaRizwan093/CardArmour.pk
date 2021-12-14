@@ -1,49 +1,29 @@
 package com.comsats.cardarmourbackend.Controller;
 
-import com.comsats.cardarmourbackend.Repository.BankAccountRepository;
+import com.comsats.cardarmourbackend.Service.BankAccountService;
 import com.comsats.cardarmourbackend.model.BankAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Random;
 
 @CrossOrigin("*")
 @RestController
 public class BankAccountController {
 
     @Autowired
-    private BankAccountRepository bankRepo;
+    private BankAccountService bankAccountService;
 
     @PostMapping("/getBankPaymentById")
     public BankAccount getBankAccountByUserId(@RequestParam int userid){
-
-        return bankRepo.getBankAccountByUserId(userid);
-
+        return bankAccountService.getBankAccountByUserId(userid);
     }
 
     @PostMapping("/addPaymentMethod")
     public int addPaymentMethod(@RequestBody BankAccount account){
-        try{
-            account.setAccountid(generateId());
-            bankRepo.addPaymentMethod(account.getAccountid(),account.getCardholdername(),account.getBankname(),account.getCardnumber(),account.getCvc(),account.getExpdate());
-        } catch(Exception e){
-        }
-        return account.getAccountid();
+        return bankAccountService.addPaymentMethod(account);
     }
 
     @PostMapping("/deletePaymentMethod")
-    public boolean deletePaymentMethod(@RequestParam int accountid){
-        try{
-            bankRepo.deletePaymentMethod(accountid);
-        }  catch(Exception e){
-        }
-        return true;
-    }
-
-
-
-    private int generateId(){
-        Random rand = new Random();
-        return rand.nextInt(10000000);
+    public void deletePaymentMethod(@RequestParam int accountid){
+       bankAccountService.deletePaymentMethod(accountid);
     }
 }

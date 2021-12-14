@@ -1,43 +1,37 @@
 package com.comsats.cardarmourbackend.Controller;
 
-import com.comsats.cardarmourbackend.Repository.FeedbackRepository;
+import com.comsats.cardarmourbackend.Service.FeedbackService;
 import com.comsats.cardarmourbackend.model.Feedback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Random;
 
 @CrossOrigin("*")
 @RestController
 public class FeedbackController {
 
     @Autowired
-    private FeedbackRepository feedbackRepository;
+    private FeedbackService feedbackService;
 
     @PostMapping("/getFeedbackById")
     public List<Feedback> getFeedback(@RequestParam int customerid){
-        try{
-            return feedbackRepository.getFeedbackByCustomerid(customerid);
-        } catch (Exception e){
-            return null;
-        }
+        return feedbackService.getFeedback(customerid);
     }
 
     @PostMapping("/addFeedback")
-    public boolean addFeedback(@RequestBody Feedback feedback){
-        try{
-            feedback.setFeedbackid(generateId());
-            feedbackRepository.addFeedback(feedback.getFeedbackid(),feedback.getDetail(),feedback.getDate(),feedback.getCustomerid());
-        } catch (Exception e){
-        }
-        return true;
+    public void addFeedback(@RequestBody Feedback feedback){
+        feedbackService.addFeedback(feedback);
     }
 
+    @GetMapping("/getAllFeedback")
+    public List<Feedback> getAllFeedback(){
+        return feedbackService.getAllFeedback();
+    }
 
-    private int generateId(){
-        Random rand = new Random();
-        return rand.nextInt(10000000);
+    @PostMapping("/getFeedbackByFeedbackId")
+    public Feedback getFeedbackByFeedbackId(@RequestParam int feedbackid){
+        return feedbackService.getFeedbackByFeedbackId(feedbackid);
     }
 
 }

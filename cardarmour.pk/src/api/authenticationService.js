@@ -34,7 +34,7 @@ export const systemUserAPI = async (data) => {
 export const addCustomer = async (data) => {
   return await axios({
     method: "POST",
-    url: "http://localhost:8080/addNewUserData",
+    url: "http://localhost:8080/addNewCustomerData",
     data: data,
   });
 };
@@ -263,6 +263,15 @@ export const setSetting = async (data) => {
     data: data
   });
 };
+
+export const getAllReply = async () => {
+  return await axios({
+    method: "GET",
+    url: "http://localhost:8080/getAllReply", 
+  });
+};
+
+
 
 
 

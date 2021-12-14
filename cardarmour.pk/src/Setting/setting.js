@@ -182,6 +182,7 @@ const Setting = () => {
     timeformat = selectedTimeFormat.language;
     lightDarkMode = selectedMode.language;
     const settingData = { language, timeformat, lightDarkMode, userid }
+    
     console.log("setting", settingData)
     updateCustomer(data).then((response) => {
       updateUser(userdata).then((response) => {
@@ -501,6 +502,12 @@ const Setting = () => {
                 className="p-button-raised p-button-danger"
                 style={{ marginLeft: "6%", marginBottom: "5%" }}
               />
+              <Button
+                  onClick={handleDelete}
+                  label="DELETE ACCOUNT"
+                  className="p-button-raised p-button-danger"
+                  style={{ marginTop: "1%", marginBottom: "1.5%" }}
+                />
             </div>
           </Col>
           <Col md={2}></Col>

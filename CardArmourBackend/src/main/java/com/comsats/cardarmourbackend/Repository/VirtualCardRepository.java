@@ -13,7 +13,7 @@ public interface VirtualCardRepository extends JpaRepository<VirtualCard,Integer
 
 
     @Query(value="DELETE FROM \"Virtual Card\" WHERE cardid = ?1 ",nativeQuery = true)
-    boolean deleteVirtualCard(int cardid);
+    void deleteVirtualCard(int cardid);
 
     @Query(value="SELECT \"Virtual Card\".cardid,\"Virtual Card\".cardholdername,\"Virtual Card\".\"card number\",\"Virtual Card\".cvc,\"Virtual Card\".expdate FROM \"Virtual Card\" JOIN \"Card Link\" ON \"Virtual Card\".cardid = \"Card Link\".virtualcardid JOIN \"Bank Account\" ON \"Card Link\".bankaccountid = \"Bank Account\".accountid WHERE \"Bank Account\".accountid = ?1",nativeQuery = true)
     VirtualCard getVirtualCard(int accountid);

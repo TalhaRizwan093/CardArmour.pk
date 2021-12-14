@@ -3,11 +3,13 @@ import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import React, {useState} from "react";
-import { getFeedback } from "../api/authenticationService"
+import { getFeedback, getAllReply } from "../api/authenticationService"
 
 const Feedbackhistory = () => {
   const navigate = useNavigate();
   const [feedbacks, setFeedbacks] = useState([]);
+  const [replies, setReplies] = useState([]);
+  const [check, setCheck] = useState(true);
  // const [cid, setCustomerid] = useState("");
 
   const getToken = () => {
@@ -27,9 +29,44 @@ const Feedbackhistory = () => {
     getFeedback(customerid).then((response) => {
       setFeedbacks(response.data)
     })
-
+    getAllReply().then((response) => {
+      setReplies(response.data)
+    })
+    
   }, []);
 
+  const checkReply = (v) => {
+    // for (let index = 0; index < 1; index++) {
+    //   for (let j = 0; j < replies.length; j++) {
+    //     if (replies[j].feedbackid === v) {
+    //       console.log("inside")
+    //       v = replies[j].comment
+    //       break;
+    //     }
+    //     else{
+    //       v = "Not found"
+    //     }
+      
+    // }
+    // break;
+    // }
+    let a;
+    replies.forEach((element) => {
+      
+      if (element.feedbackid === v) {
+        console.log("inside")
+        a = element.comment
+      }
+      // else{
+      //   v = "Not found"
+      // }
+    });
+    console.log(typeof a)
+    if( a === undefined){
+      a = "Waiting for Admin Response..."
+    }
+    return a;
+  }
   const handleReturnHome = (e) => {
     e.preventDefault();
     navigate("/homepage");
@@ -105,7 +142,8 @@ const Feedbackhistory = () => {
                 {/* <td>{titleLov[product.title - 1].title}</td>
                     <td>{CheckkTitle(product.title)}</td> */}
                 <td>{feedback.detail}</td>
-                {/* <td>{feedback}</td> */}
+                {/* {check && <td>{"Not Replied Yet"}</td>} */}
+                <td>{checkReply(feedback.feedbackid)}</td>
                 {/* <td>{transaction.comment}</td>
                 <td>{transaction.amount}</td> */}
               </tr>

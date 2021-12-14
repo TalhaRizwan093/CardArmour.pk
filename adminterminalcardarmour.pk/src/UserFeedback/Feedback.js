@@ -5,7 +5,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import React, { useState } from "react";
 import "./Feedback.css";
 import { useNavigate } from "react-router-dom";
-import { addFeedback } from "../api/authenticationService";
+import {getFeedbackByFeedbackId, addReply,getAdminID } from "../api/authenticationService";
 
 const Feedback = () => {
   const [detail, setDetail] = useState("");
@@ -16,19 +16,31 @@ const Feedback = () => {
     return localStorage.getItem("USER_KEY");
   };
 
-  const getCustomerId = () => {
-    return localStorage.getItem("C_ID");
+  const getID = () => {
+    return localStorage.getItem("USER_ID");
+  };
+
+  const getFeedbackId = () => {
+    return localStorage.getItem("FEEDBACK_ID");
+  };
+  const getFeedbackCustomerId = () => {
+    return localStorage.getItem("FEEDBACK_CUSTOMER_ID");
   };
 
   let username = getToken();
-
+  let feedbackid;
   React.useEffect(() => {
     username = getToken();
     if (username === "undefined" || username === null) {
       navigate("/");
     }
+    feedbackid = getFeedbackId();
+    getFeedbackByFeedbackId(feedbackid).then((response) => {
+      console.log("feedback ", response)
+      setDetail(response.data.detail)
+    })
   }, []);
-
+  
   const handleCancel = (e) => {
     e.preventDefault();
     navigate("/homepage");
@@ -36,13 +48,22 @@ const Feedback = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const customerid = getCustomerId();
+    const userid = getID();
+    let adminid;
+    const comment = response;
     const date = new Date();
-    const data = { detail, customerid, date };
-    addFeedback(data).then((response) => {
-      alert("Feedback saved");
-    });
-    console.log(data);
+    feedbackid = getFeedbackId();
+    getAdminID(userid).then((response) => {
+      console.log(response)
+      adminid = response.data
+      const data = {adminid,comment,date,feedbackid}
+      console.log("reply",data)
+      addReply(data).then((response) => {
+        navigate('/homepage')
+      })
+    })
+    
+
   };
 
   return (

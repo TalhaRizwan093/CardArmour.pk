@@ -1,6 +1,6 @@
 package com.comsats.cardarmourbackend.Controller;
 
-import com.comsats.cardarmourbackend.Repository.TransactionRepository;
+import com.comsats.cardarmourbackend.Service.TransactionService;
 import com.comsats.cardarmourbackend.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,43 +15,26 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    private TransactionRepository transactionRepository;
+    private TransactionService transactionService;
 
     @PostMapping("/getAllTransactions")
     public List<Transaction> GetAll(@RequestParam int virtualcardid){
-        try{
-            return transactionRepository.getAllTransactionByVirtualcardid(virtualcardid);
-        } catch (Exception e){
-            return null;
-        }
+        return transactionService.GetAll(virtualcardid);
     }
 
     @PostMapping("/getFiveTransactions")
     public List<Transaction> GetFive(@RequestParam int virtualcardid){
-        try{
-            return transactionRepository.getFiveLatestTransactions(virtualcardid);
-        } catch (Exception e){
-            return null;
-        }
+        return transactionService.GetFive(virtualcardid);
     }
 
     @PostMapping("/getTotalSpending")
     public int GetSpending(@RequestParam int virtualcardid){
-        try{
-            return transactionRepository.getTotalSpendingByVirtualcardid(virtualcardid);
-        } catch(Exception e){
-            return 0;
-        }
+       return transactionService.GetSpending(virtualcardid);
     }
 
     @PostMapping("/getTotalTransactions")
     public int GetTotalTransactions(@RequestParam int virtualcardid){
-        try{
-            return transactionRepository.getTotalTransactionsByVirtualcardid(virtualcardid);
-        } catch (Exception e){
-            return 0;
-        }
+       return transactionService.GetTotalTransactions(virtualcardid);
     }
-
 
 }

@@ -3,14 +3,16 @@ import { Col, Row } from "react-bootstrap";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { getTransactions } from "../api/authenticationService";
-import { totalSpending, totlaTransactions } from "../api/authenticationService";
+import { getAllFlaggedCustomers, getAllCities, countriesAPI, deleteUser, getUseridByCustomerid } from "../api/authenticationService";
 
 const Cardhistory = () => {
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [totalSpendings, setTotalSpending] = useState("");
   const [totalTransactions_, setTotalTransactions] = useState("");
+  const [flaggedUsers, setFlaggedUsers] = useState([]);
+  const [citiesLov, setCitiesLov] = useState([]);
+  const [countriesLov, setCountriesLov] = useState([]);
 
   const getToken = () => {
     return localStorage.getItem("USER_KEY");
@@ -18,6 +20,7 @@ const Cardhistory = () => {
   const getVirtualCardID = () => {
     return localStorage.getItem("VC_ID");
   };
+
   let username = getToken();
 
   React.useEffect(() => {
@@ -27,17 +30,18 @@ const Cardhistory = () => {
     if (username === "undefined" || username === null) {
       navigate("/");
     }
-    getTransactions(cardid).then((response) => {
-      const transactionList = response.data;
-      setTransactions(transactionList);
-      console.log(transactions);
-      totalSpending(cardid).then((response) => {
-        setTotalSpending(response.data);
-      });
-      totlaTransactions(cardid).then((response) => {
-        setTotalTransactions(response.data);
-      });
-    });
+    getAllFlaggedCustomers().then((response) => {
+      console.log(response)
+      setFlaggedUsers(response.data)
+    })
+
+    getAllCities().then((response) => {
+      setCitiesLov(response.data)
+    })
+    countriesAPI().then((response) => {
+      setCountriesLov(response.data)
+    })
+
   }, []);
 
   const handleReturnHome = (e) => {
@@ -45,9 +49,37 @@ const Cardhistory = () => {
     navigate("/homepage");
   };
 
-  const handleReport = (e) => {
-    e.preventDefault();
-    navigate("/feedback");
+
+  const handleDelete = (e) => {
+    //e.preventDefault();
+    console.log(e.value)
+    //deleteUser()
+  }
+
+  const CheckCity = (v) => {
+    citiesLov.forEach((element) => {
+      let countryid;
+      if (element.cityid === v) {
+        countryid = element.countryid;
+        v = element.name;
+        countriesLov.forEach((element) => {
+          if (countryid === element.countryid)
+            v = v + ", " + element.name;
+        })
+      }
+    });
+    return v;
+  };
+
+  const dob = (v) => {
+    let dob = "";
+    for (let index = 0; index < v.length; index++) {
+      dob = dob + v[index]
+      if (v[index + 1] === 'T') {
+        break
+      }
+    }
+    return dob;
   };
 
   return (
@@ -103,16 +135,43 @@ const Cardhistory = () => {
             <th style={{ textAlign: "center" }}>Options</th>
           </tr>
           <tbody>
-            {/* {feedbacks.map((feedback) => ( */}
-            <tr>
-              {/* <td>{titleLov[product.title - 1].title}</td>
-                    <td>{CheckkTitle(product.title)}</td> */}
-              {/* <td>{feedback.detail}</td> */}
-              {/* <td>{feedback}</td> */}
-              {/* <td>{transaction.comment}</td>
-                <td>{transaction.amount}</td> */}
-            </tr>
-            {/* ))} */}
+            {flaggedUsers.map((flaggedUser) => (
+              <tr>
+                <td>{flaggedUser.name}</td>
+                <td>{flaggedUser.gender}</td>
+                <td>{flaggedUser.cnic}</td>
+                {/* <td>{flaggedUser.dob}</td> */}
+                <td>{dob(flaggedUser.dob)}</td>
+                <td>{flaggedUser.age}</td>
+                <td>{flaggedUser.email}</td>
+                <td>{CheckCity(flaggedUser.cityid)}</td>
+                <td>              <Button
+                  onClick={() => {
+
+                  }}
+                  label="Remove From Flag User"
+                  className="p-button-outlined p-button-warning"
+                  style={{ color: "yellow" }}
+                />
+                  <Button
+                    onClick={() => {
+                      console.log(flaggedUser.customerid)
+                      let userid;
+                      getUseridByCustomerid(flaggedUser.customerid).then((response) => {
+                        userid = response.data
+                        console.log(userid)
+                        deleteUser(userid).then((response) => {
+                          window.location.reload(true);
+                        })
+                      })
+                    }}
+                    label="Delete Account"
+                    className="p-button-outlined p-button-warning"
+                    style={{ color: "red", marginLeft: '2%' }}
+                  />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
