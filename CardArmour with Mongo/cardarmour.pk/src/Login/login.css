@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.LoginTag {
+  font-size: xx-large;
+  text-align: center;
+}
+.WelcomeTag {
+  margin-top: -5%;
+  font-size: medium;
+  text-align: center;
+  margin-bottom: 8%;
+}
+
+.p-chip.custom-chip {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+}
+
+.secondarylogin {
+  margin-left: 41%;
+  margin-top: 8%;
+}
+
+.nameLogin {
+  margin-left: 41.5%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.p-field-checkbox {
+  margin-left: 29%;
+  margin-top: -3%;
+}
+
+.pending {
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  margin-left: 45%;
+  margin-top: 50%;
+}
+
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  margin-left: 29%;
+  margin-right: 27%;
+}

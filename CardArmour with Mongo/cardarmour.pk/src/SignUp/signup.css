@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+.nameSignup {
+  margin-left: 42%;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.SignUpTag {
+  font-size: xx-large;
+  margin-left: 60%;
+  margin-top: -1.5%;
+  margin-bottom: 3%;
+}
